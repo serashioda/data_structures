@@ -39,3 +39,14 @@ class BinarySearchTree(object):
                 self._insert_node(val, node.rightChild)
             else:
                 node.rightChild = Node(val)
+
+    def depth(self):
+        """Call helper depth method."""
+        return self._depth_node(self.root)
+
+    def _depth_node(self, root, depth=0):
+        """Depth method the takes in root node."""
+        if root is None:
+            return depth
+        return max(self._depth_node(root.leftChild, depth + 1),
+                   self._depth_node(root.rightChild, depth + 1))
