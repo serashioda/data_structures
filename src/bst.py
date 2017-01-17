@@ -1,6 +1,7 @@
 """Implementation of a Binary Search Tree."""
 
 from queue import Queue
+from stack import Stack
 
 
 class Node(object):
@@ -86,9 +87,9 @@ class BinarySearchTree(object):
         while q.size():
             node = q.dequeue()
             yield node.val
-            if (node.leftChild is not None):
+            if node.leftChild is not None:
                 q.enqueue(node.leftChild)
-            if (node.rightChild is not None):
+            if node.rightChild is not None:
                 q.enqueue(node.rightChild)
 
     def preorder(self):

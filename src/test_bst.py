@@ -10,6 +10,42 @@ def empty_bst():
     return BinarySearchTree()
 
 
+@pytest.fixture
+def bst_1():
+    """Create a Binary Search Tree and return it."""
+    from bst import BinarySearchTree
+    b_s_t = BinarySearchTree()
+    b_s_t.insert(8)
+    b_s_t.insert(10)
+    b_s_t.insert(3)
+    b_s_t.insert(1)
+    b_s_t.insert(6)
+    b_s_t.insert(14)
+    b_s_t.insert(4)
+    b_s_t.insert(7)
+    b_s_t.insert(13)
+    return b_s_t
+
+
+@pytest.fixture
+def bst_2():
+    """Create a Binary Search Tree and return it."""
+    from bst import BinarySearchTree
+    b_s_t = BinarySearchTree()
+    b_s_t.insert(36)
+    b_s_t.insert(3)
+    b_s_t.insert(14)
+    b_s_t.insert(26)
+    b_s_t.insert(5)
+    b_s_t.insert(4)
+    b_s_t.insert(11)
+    b_s_t.insert(40)
+    b_s_t.insert(52)
+    b_s_t.insert(94)
+    b_s_t.insert(74)
+    return b_s_t
+
+
 def test_insert_one(empty_bst):
     """Test inserting one value."""
     empty_bst.insert(8)
@@ -57,32 +93,14 @@ def test_insert_six_left(empty_bst):
     assert empty_bst.root.leftChild.rightChild.val == 6
 
 
-def test_size(empty_bst):
+def test_size(bst_1):
     """Test size with 9 nodes."""
-    empty_bst.insert(8)
-    empty_bst.insert(10)
-    empty_bst.insert(3)
-    empty_bst.insert(1)
-    empty_bst.insert(6)
-    empty_bst.insert(14)
-    empty_bst.insert(4)
-    empty_bst.insert(7)
-    empty_bst.insert(13)
-    assert empty_bst.size() == 9
+    assert bst_1.size() == 9
 
 
-def test_depth_3(empty_bst):
+def test_depth_3(bst_1):
     """Test depth method on 3 depth tree."""
-    empty_bst.insert(8)
-    empty_bst.insert(10)
-    empty_bst.insert(3)
-    empty_bst.insert(1)
-    empty_bst.insert(6)
-    empty_bst.insert(14)
-    empty_bst.insert(4)
-    empty_bst.insert(7)
-    empty_bst.insert(13)
-    assert empty_bst.depth() == 3
+    assert bst_1.depth() == 3
 
 
 def test_contains_is_false(empty_bst):
@@ -154,16 +172,49 @@ def test_not_balanced(empty_bst):
     assert empty_bst.balance() == -2
 
 
-def test_breath_first(empty_bst):
-    """Test breath first on 9 size tree."""
-    empty_bst.insert(8)
-    empty_bst.insert(10)
-    empty_bst.insert(3)
-    empty_bst.insert(1)
-    empty_bst.insert(6)
-    empty_bst.insert(14)
-    empty_bst.insert(4)
-    empty_bst.insert(7)
-    empty_bst.insert(13)
-    breadth_first_comprension = [num for num in empty_bst.breadth_first()]
+def test_breath_first(bst_1):
+    """Test breath_first traversal on bst_1."""
+    breadth_first_comprension = [num for num in bst_1.breadthfirst()]
     assert breadth_first_comprension == [8, 3, 10, 1, 6, 14, 4, 7, 13]
+
+
+def test_breath_first_diffrent(bst_2):
+    """Test breath_first traversal on bst_2."""
+    breadth_first_comprension = [num for num in bst_2.breadthfirst()]
+    assert breadth_first_comprension == [36, 3, 40, 14, 52, 5, 26, 94, 4, 11, 74]
+
+
+def test_pre_order(bst_1):
+    """Test pre_order traversal on bst_1."""
+    pre_order_comprension = [num for num in bst_1.preorder()]
+    assert pre_order_comprension == [8, 3, 1, 6, 4, 7, 10, 14, 13]
+
+
+def test_pre_order_diffrent(bst_2):
+    """Test pre_order traversal on bst_2."""
+    pre_order_comprension = [num for num in bst_2.preorder()]
+    assert pre_order_comprension == [36, 3, 14, 5, 4, 11, 26, 40, 52, 94, 74]
+
+
+def test_in_order(bst_1):
+    """Test in_order traversal on bst_1."""
+    in_order_comprension = [num for num in bst_1.inorder()]
+    assert in_order_comprension == [1, 3, 4, 6, 7, 8, 10, 13, 14]
+
+
+def test_in_order_diffrent(bst_2):
+    """Test in_order traversal on bst_2."""
+    in_order_comprension = [num for num in bst_2.inorder()]
+    assert in_order_comprension == [3, 4, 5, 11, 14, 26, 36, 40, 52, 74, 94]
+
+
+def test_post_order(bst_1):
+    """Test post_order traversal on bst_1."""
+    in_order_comprension = [num for num in bst_1.postorder()]
+    assert in_order_comprension == [1, 4, 7, 6, 3, 13, 14, 10, 8]
+
+
+def test_post_order_diffrent(bst_2):
+    """Test post_order traversal on bst_1."""
+    in_order_comprension = [num for num in bst_2.postorder()]
+    assert in_order_comprension == [4, 11, 5, 26, 14, 3, 74, 94, 52, 40, 36]
