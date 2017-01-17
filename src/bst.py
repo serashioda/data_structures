@@ -42,7 +42,7 @@ class BinarySearchTree(object):
 
     def depth(self):
         """Call helper depth method."""
-        return self._depth_node(self.root)
+        return self._depth_node(self.root) - 1
 
     def _depth_node(self, root, depth=0):
         """Depth method the takes in root node."""
@@ -50,3 +50,9 @@ class BinarySearchTree(object):
             return depth
         return max(self._depth_node(root.leftChild, depth + 1),
                    self._depth_node(root.rightChild, depth + 1))
+
+    def balance(self):
+        """Return 1, 0 or -1 that represents how well balanced the tree is."""
+        if self.root is None:
+            return 0
+        return self._depth_node(self.root.rightChild) - self._depth_node(self.root.leftChild)

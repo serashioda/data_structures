@@ -23,16 +23,15 @@ def test_insert_two(empty_bst):
     assert empty_bst.root.rightChild.val == 10
 
 
-def test_insert_three(empty_bst):
+def test_depth_3(empty_bst):
     """Test inserting three values."""
     empty_bst.insert(8)
     empty_bst.insert(10)
     empty_bst.insert(3)
     empty_bst.insert(1)
-    empty_bst.insert(3)
+    empty_bst.insert(6)
     empty_bst.insert(14)
     empty_bst.insert(4)
     empty_bst.insert(7)
     empty_bst.insert(13)
-    empty_bst.depth() == 3
-    assert empty_bst.root.leftChild.val == 3
+    assert empty_bst.depth() == 3
