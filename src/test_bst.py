@@ -32,14 +32,29 @@ def test_insert_three(empty_bst):
 
 
 def test_insert_six_right(empty_bst):
-    """Test inserting three values."""
+    """Test inserting 6 values last three inserted to the right of the root node."""
     empty_bst.insert(8)
     empty_bst.insert(10)
     empty_bst.insert(3)
     empty_bst.insert(17)
-    empty_bst.insert(15)
+    empty_bst.insert(9)
     empty_bst.insert(32)
-    assert empty_bst.root.leftChild.val == 3
+    assert empty_bst.root.rightChild.rightChild.val == 17
+    assert empty_bst.root.rightChild.rightChild.rightChild.val == 32
+    assert empty_bst.root.rightChild.leftChild.val == 9
+
+
+def test_insert_six_left(empty_bst):
+    """Test inserting 6 values last three inserted to the left of the root node."""
+    empty_bst.insert(8)
+    empty_bst.insert(10)
+    empty_bst.insert(3)
+    empty_bst.insert(6)
+    empty_bst.insert(4)
+    empty_bst.insert(2)
+    assert empty_bst.root.leftChild.leftChild.val == 2
+    assert empty_bst.root.leftChild.rightChild.leftChild.val == 4
+    assert empty_bst.root.leftChild.rightChild.val == 6
 
 
 def test_depth_3(empty_bst):
