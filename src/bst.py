@@ -53,13 +53,13 @@ class BinarySearchTree(object):
 
     def contains(self, val):
         """Return True if val is in the BST, False if not."""
-        return self.search(val) != None
+        return self.search(val) is not None
 
     def balance(self):
         """Return 1, 0 or -1 that represents how well balanced the tree is."""
         if self.root is None:
             return 0
-        return self._depth_node(self.root.leftChild) - self._depth_node(self.root.rightChild)
+        return (self._depth_node(self.root.leftChild) - self._depth_node(self.root.rightChild)) * -1
 
     def size(self):
         """Return size of bst."""

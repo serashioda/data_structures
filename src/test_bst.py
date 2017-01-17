@@ -108,16 +108,32 @@ def test_search_curr_node(empty_bst):
 
 def test_search_curr_node_is_none(empty_bst):
     """Test if node exiss in tree."""
-    assert empty_bst.contains(9) == False
+    assert empty_bst.contains(9) is False
 
 
 def test_balance_curr_node_is_none(empty_bst):
     """Test if node exiss in tree."""
     assert empty_bst.balance() == 0
 
+
 def test_balance_equal_curr_node(empty_bst):
     """Test if node exiss in tree."""
     empty_bst.insert(5)
     empty_bst.insert(7)
     empty_bst.insert(4)
+    assert empty_bst.balance() == 0
+
+
+def test_balance_two_node(empty_bst):
+    """Test finding blance from a two node tree."""
+    empty_bst.insert(10)
+    empty_bst.insert(15)
+    assert empty_bst.balance() == 1
+
+
+def test_find_balance_balanced_three_node(empty_bst):
+    """Test finding balance from a balanced three node tree."""
+    empty_bst.insert(10)
+    empty_bst.insert(15)
+    empty_bst.insert(5)
     assert empty_bst.balance() == 0
