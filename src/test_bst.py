@@ -57,6 +57,20 @@ def test_insert_six_left(empty_bst):
     assert empty_bst.root.leftChild.rightChild.val == 6
 
 
+def test_size(empty_bst):
+    """Test size with 9 nodes."""
+    empty_bst.insert(8)
+    empty_bst.insert(10)
+    empty_bst.insert(3)
+    empty_bst.insert(1)
+    empty_bst.insert(6)
+    empty_bst.insert(14)
+    empty_bst.insert(4)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    assert empty_bst.size() == 9
+
+
 def test_depth_3(empty_bst):
     """Test depth method on 3 depth tree."""
     empty_bst.insert(8)
