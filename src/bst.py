@@ -59,7 +59,7 @@ class BinarySearchTree(object):
         """Return 1, 0 or -1 that represents how well balanced the tree is."""
         if self.root is None:
             return 0
-        return (self._depth_node(self.root.leftChild) - self._depth_node(self.root.rightChild)) * -1
+        return self._depth_node(self.root.leftChild) - self._depth_node(self.root.rightChild)
 
     def size(self):
         """Return size of bst."""

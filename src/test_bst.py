@@ -128,14 +128,14 @@ def test_balance_two_node(empty_bst):
     """Test finding blance from a two node tree."""
     empty_bst.insert(10)
     empty_bst.insert(15)
-    assert empty_bst.balance() == 1
+    assert empty_bst.balance() == -1
 
 
 def test_balance_two_nodes_negative(empty_bst):
-    """Test finding blance from a two node tree (negative)."""
+    """Test finding blance from a two node tree."""
     empty_bst.insert(10)
     empty_bst.insert(2)
-    assert empty_bst.balance() == -1
+    assert empty_bst.balance() == 1
 
 
 def test_find_balance_balanced_three_node(empty_bst):
@@ -151,4 +151,4 @@ def test_not_balanced(empty_bst):
     empty_bst.insert(5)
     empty_bst.insert(15)
     empty_bst.insert(10)
-    assert empty_bst.balance() == 2
+    assert empty_bst.balance() == -2
