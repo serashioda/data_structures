@@ -50,3 +50,21 @@ class BinarySearchTree(object):
             return depth
         return max(self._depth_node(root.leftChild, depth + 1),
                    self._depth_node(root.rightChild, depth + 1))
+
+    def size(self):
+        """Return size of bst."""
+        return self.size
+
+    def search(self, val):
+        """Search if node exist in tree and reuturn if present, otherwise None."""
+        curr_node = self.root
+        while curr_node:
+            if curr_node.val == val:
+                return curr_node
+            elif curr_node.val > val:
+                curr_node== curr_node.rightChild
+            else: 
+                curr_node == curr_node.leftChild
+            curr_node = curr_node.next
+        return None
+
