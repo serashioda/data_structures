@@ -31,6 +31,17 @@ def test_insert_three(empty_bst):
     assert empty_bst.root.leftChild.val == 3
 
 
+def test_insert_six_right(empty_bst):
+    """Test inserting three values."""
+    empty_bst.insert(8)
+    empty_bst.insert(10)
+    empty_bst.insert(3)
+    empty_bst.insert(17)
+    empty_bst.insert(15)
+    empty_bst.insert(32)
+    assert empty_bst.root.leftChild.val == 3
+
+
 def test_depth_3(empty_bst):
     """Test depth method on 3 depth tree."""
     empty_bst.insert(8)
