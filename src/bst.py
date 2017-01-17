@@ -80,7 +80,7 @@ class BinarySearchTree(object):
                 curr_node = curr_node.leftChild
         return None
 
-    def breadth_first(self):
+    def breadthfirst(self):
         """Breadth First Traversal for Binary Search Tree."""
         q = Queue()
         q.enqueue(self.root)
@@ -94,8 +94,6 @@ class BinarySearchTree(object):
 
     def preorder(self):
         """Preorder generator."""
-        if node is not null:
-            return
         node = self.root
         s = Stack()
         s.push(node)
