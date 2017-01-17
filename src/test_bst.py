@@ -152,3 +152,18 @@ def test_not_balanced(empty_bst):
     empty_bst.insert(15)
     empty_bst.insert(10)
     assert empty_bst.balance() == -2
+
+
+def test_breath_first(empty_bst):
+    """Test breath first on 9 size tree."""
+    empty_bst.insert(8)
+    empty_bst.insert(10)
+    empty_bst.insert(3)
+    empty_bst.insert(1)
+    empty_bst.insert(6)
+    empty_bst.insert(14)
+    empty_bst.insert(4)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    breadth_first_comprension = [num for num in empty_bst.breadth_first()]
+    assert breadth_first_comprension == [8, 3, 10, 1, 6, 14, 4, 7, 13]

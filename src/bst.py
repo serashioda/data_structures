@@ -1,5 +1,7 @@
 """Implementation of a Binary Search Tree."""
 
+from queue import Queue
+
 
 class Node(object):
     """Node class."""
@@ -76,3 +78,15 @@ class BinarySearchTree(object):
             else:
                 curr_node = curr_node.leftChild
         return None
+
+    def breadth_first(self):
+        """Breadth First Traversal for Binary Search Tree."""
+        q = Queue()
+        q.enqueue(self.root)
+        while q.size():
+            node = q.dequeue()
+            yield node.val
+            if (node.leftChild is not None):
+                q.enqueue(node.leftChild)
+            if (node.rightChild is not None):
+                q.enqueue(node.rightChild)
