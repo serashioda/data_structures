@@ -90,3 +90,25 @@ class BinarySearchTree(object):
                 q.enqueue(node.leftChild)
             if (node.rightChild is not None):
                 q.enqueue(node.rightChild)
+
+    def preorder(self):
+        """Preorder generator."""
+
+    def postorder(self):
+        """Postorder generator."""
+
+    def inorder(self):
+        """In order generator."""
+        node = self.root
+        s = Stack()
+        while s.size() and node is not None:
+            if node is not None:
+                s.push(node)
+                node = node.leftChild
+            else:
+                node = s.pop()
+                yield node.val
+                node = node.rightChild
+
+
+
