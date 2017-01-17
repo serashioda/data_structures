@@ -93,6 +93,18 @@ class BinarySearchTree(object):
 
     def preorder(self):
         """Preorder generator."""
+        if node is not null:
+            return
+        node = self.root
+        s = Stack()
+        s.push(node)
+        while s.size() is not None:
+            node = s.pop()
+            yield node.val
+            if node.rightChild is not None:
+                s.push(node.rightChild)
+            if node.leftChild is not None:
+                s.push(node.leftChild)
 
     def postorder(self):
         """Postorder generator."""
@@ -109,6 +121,3 @@ class BinarySearchTree(object):
                 node = s.pop()
                 yield node.val
                 node = node.rightChild
-
-
-
