@@ -83,3 +83,41 @@ def test_depth_3(empty_bst):
     empty_bst.insert(7)
     empty_bst.insert(13)
     assert empty_bst.depth() == 3
+
+
+def test_contains_is_false(empty_bst):
+    """Test when val is not in BST."""
+    empty_bst.insert(8)
+    assert empty_bst.contains(8)
+
+
+def test_contains_is_true(empty_bst):
+    """Test when val is in BST."""
+    assert empty_bst.size() == 0
+
+
+def test_search_curr_node(empty_bst):
+    """Test if node exiss in tree."""
+    empty_bst.insert(5)
+    empty_bst.insert(7)
+    empty_bst.insert(4)
+    assert empty_bst.contains(4)
+    assert empty_bst.contains(5)
+    assert empty_bst.contains(7)
+
+
+def test_search_curr_node_is_none(empty_bst):
+    """Test if node exiss in tree."""
+    assert empty_bst.contains(9) == False
+
+
+def test_balance_curr_node_is_none(empty_bst):
+    """Test if node exiss in tree."""
+    assert empty_bst.balance() == 0
+
+def test_balance_equal_curr_node(empty_bst):
+    """Test if node exiss in tree."""
+    empty_bst.insert(5)
+    empty_bst.insert(7)
+    empty_bst.insert(4)
+    assert empty_bst.balance() == 0

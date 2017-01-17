@@ -17,7 +17,7 @@ class BinarySearchTree(object):
     def __init__(self):
         """Binary Search Tree instantiation."""
         self.root = None
-        self.size = 0
+        self._size = 0
 
     def insert(self, val):
         """Insert value into Binary Search Tree."""
@@ -25,7 +25,7 @@ class BinarySearchTree(object):
             self.root = Node(val)
         else:
             self._insert_node(val, self.root)
-        self.size += 1
+        self._size += 1
 
     def _insert_node(self, val, node):
         """Insert a node when not at the root."""
@@ -53,7 +53,7 @@ class BinarySearchTree(object):
 
     def contains(self, val):
         """Return True if val is in the BST, False if not."""
-        return search(val) is not None
+        return self.search(val) != None
 
     def balance(self):
         """Return 1, 0 or -1 that represents how well balanced the tree is."""
@@ -63,16 +63,16 @@ class BinarySearchTree(object):
 
     def size(self):
         """Return size of bst."""
-        return self.size
+        return self._size
 
     def search(self, val):
-        """Search if node exist in tree and reuturn if present, otherwise None."""
+        """Search if node exist in tree and return if present, otherwise None."""
         curr_node = self.root
         while curr_node:
             if curr_node.val == val:
                 return curr_node
-            elif curr_node.val > val:
-                curr_node == curr_node.rightChild
+            elif val > curr_node.val:
+                curr_node = curr_node.rightChild
             else:
-                curr_node == curr_node.leftChild
+                curr_node = curr_node.leftChild
         return None
