@@ -108,6 +108,20 @@ class BinarySearchTree(object):
 
     def postorder(self):
         """Postorder generator."""
+        node = self.root
+        s = []
+        last_visited = None
+        while s and node is not None:
+            if node is not None:
+                s.append(node)
+                node = node.leftChild
+            else:
+                peek_node = s[-1]
+                if peek_node.rightChild is not None and last_visited is not peek_node.rightChild:
+                    node = peek_node.rightChild
+                else:
+                    yield peek_node.val
+                    last_visited = s.pop()
 
     def inorder(self):
         """In order generator."""
