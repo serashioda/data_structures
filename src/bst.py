@@ -95,6 +95,8 @@ class BinarySearchTree(object):
     def preorder(self):
         """Preorder generator."""
         node = self.root
+        if node is not null:
+            return
         s = Stack()
         s.push(node)
         while s.size() is not None:
