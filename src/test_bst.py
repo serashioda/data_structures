@@ -174,14 +174,14 @@ def test_not_balanced(empty_bst):
 
 def test_breath_first(bst_1):
     """Test breath_first traversal on bst_1."""
-    breadth_first_comprension = [num for num in bst_1.breadthfirst()]
-    assert breadth_first_comprension == [8, 3, 10, 1, 6, 14, 4, 7, 13]
+    breadth_first_comprehension = [num for num in bst_1.breadthfirst()]
+    assert breadth_first_comprehension == [8, 3, 10, 1, 6, 14, 4, 7, 13]
 
 
-def test_breath_first_diffrent(bst_2):
+def test_breath_first_different(bst_2):
     """Test breath_first traversal on bst_2."""
-    breadth_first_comprension = [num for num in bst_2.breadthfirst()]
-    assert breadth_first_comprension == [36, 3, 40, 14, 52, 5, 26, 94, 4, 11, 74]
+    breadth_first_comprehension = [num for num in bst_2.breadthfirst()]
+    assert breadth_first_comprehension == [36, 3, 40, 14, 52, 5, 26, 94, 4, 11, 74]
 
 
 def test_pre_order(bst_1):
