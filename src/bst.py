@@ -1,6 +1,6 @@
 """Implementation of a Binary Search Tree."""
 
-from queue import Queue
+from my_queue import Queue
 from stack import Stack
 
 
