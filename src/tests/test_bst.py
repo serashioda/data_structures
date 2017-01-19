@@ -218,3 +218,10 @@ def test_post_order_diffrent(bst_2):
     """Test post_order traversal on bst_1."""
     in_order_comprension = [num for num in bst_2.postorder()]
     assert in_order_comprension == [4, 11, 5, 26, 14, 3, 74, 94, 52, 40, 36]
+
+
+def test_delete_root(empty_bst):
+    """Test delete on one node in bst."""
+    empty_bst.insert(1)
+    empty_bst.delete(1)
+    assert empty_bst.root is None
