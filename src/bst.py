@@ -136,3 +136,54 @@ class BinarySearchTree(object):
                 node = s.pop()
                 yield node.val
                 node = node.rightChild
+
+    def delete(self, val):
+        """Delete a node."""
+        if self.root is None:
+            return False
+        elif self.root.val == val:
+            if self.root.leftChild is None and self.root.rightChild is None:
+                self.root = None
+            elif self.root.leftChild and self.root.rightChild is None:
+                self.root = self.root.leftChild
+            elif self.root.rightChild and self.root.rightChild is None:
+                self.root = self.root.rightChild
+            else:
+                del_node_parent = self.root
+                del_node = self.root.rightChild
+                while del_node.leftChild:
+                    del_node_parent = del_node
+                    del_node = del_node.leftChild
+
+                self.root.val = del_node.val
+                if del_node.rightChild:
+                    if del_node_parent.val > del_node.val:
+                        del_node_parent.leftChild = del_node.rightChild
+                    elif del_node_parent.val < del_node.val:
+                        del_node_parent.rightChild = del_node.rightChild
+                else:
+                    if del_node.val < del_node_parent.val:
+                        del_node_parent.leftChild = None
+                    else:
+                        del_node_parent.rightChild = None
+
+            return True
+
+        parent = None
+        node = self.root
+
+        while node and node.val != val:
+            parent = node
+            if val < node.val:
+                node = node.leftChild
+            elif val > node.val:
+                node = node.rightChild
+
+        if node is None or node.val != val:
+            return False
+        elif node.leftChild is None and node.rightChild is None:
+            if val < parent.val:
+                parent.leftChild = None
+            else:
+                parent.rightChild = None
+            return True
