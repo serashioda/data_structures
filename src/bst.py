@@ -140,10 +140,10 @@ class BinarySearchTree(object):
     def delete(self, val):
         """Delete a node."""
         if self.root is None:
-            return False
+            return None
         elif self.root.val == val:
             if self.root.leftChild is None and self.root.rightChild is None:
-                self.root = None
+                self.root = None==
             elif self.root.leftChild and self.root.rightChild is None:
                 self.root = self.root.leftChild
             elif self.root.rightChild and self.root.rightChild is None:
@@ -179,11 +179,54 @@ class BinarySearchTree(object):
             elif val > node.val:
                 node = node.rightChild
 
-        if node is None or node.val != val:
-            return False
+        # if node not found in tree
+        if node is None:
+            return None
+
+        # if node to delete has no children
         elif node.leftChild is None and node.rightChild is None:
             if val < parent.val:
                 parent.leftChild = None
             else:
                 parent.rightChild = None
-            return True
+            return
+
+        # node to delete has only a left child
+        elif node.leftChild and node.rightChild is None:
+            if val < parent.val:
+                parent.leftChild = node.leftChild
+            else:
+                parent.rightChild = node.leftChild
+            return
+
+        # node to delete has only a right child
+        elif node.rightchild and node.leftChild is None:
+            if val < parent.val:
+                parent.leftChild = node.rightChild
+            else:
+                parent.rightChild = node.rightChild
+            return
+
+        # node to delete has both left and right children
+        else:
+            if self._depth_node(node.leftChild) < self._depth_node(node.rightChild):
+                curr = node.rightChild
+                innermost_direction = 'leftChild'
+                outer_direction = 'rightChild'
+            else:
+                curr = node.leftChild
+                innermost_direction = 'rightChild'
+                outer_direction = 'leftChild'
+            parent = curr
+            while curr:
+                if parent == curr:
+                    replacement_node = curr
+                    curr = getattr(curr, innermost_direction)
+                    continue
+                replacement_node = curr
+                curr = getattr(curr, innermost_direction)
+                if curr:
+                    parent = getattr(parent, innermost_direction)
+
+            node.val = replacement_node.val
+            setattr(parent, innermost_direction, getattr(replacement_node, outer_direction))

@@ -224,3 +224,43 @@ def test_delete_root(empty_bst):
     empty_bst.insert(1)
     empty_bst.delete(1)
     assert empty_bst.root is None
+
+
+def test_delete_two_children_right_child(empty_bst):
+    """Test delete on one node with two children and successor has right child."""
+    empty_bst.insert(10)
+    empty_bst.insert(5)
+    empty_bst.insert(15)
+    empty_bst.insert(18)
+    empty_bst.insert(12)
+    empty_bst.insert(13)
+    empty_bst.delete(15)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [5, 10, 13, 12, 18]
+
+
+def test_delete_two_children_not_right_child(empty_bst):
+    """Test delete on one node with two children."""
+    empty_bst.insert(10)
+    empty_bst.insert(5)
+    empty_bst.insert(15)
+    empty_bst.insert(18)
+    empty_bst.insert(12)
+    empty_bst.delete(15)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [5, 10, 12, 18]
+
+
+def test_delete(bst_1):
+    """Test delete."""
+    bst_1.delete(8)
+    # bst_1.delete(4)
+    in_order_comprension = [num for num in bst_1.inorder()]
+    assert in_order_comprension == [1, 3, 4, 6, 7, 8, 10, 13, 14]
+
+
+def test_parent(empty_bst):
+    empty_bst.insert(10)
+    empty_bst.insert(5)
+    empty_bst.insert(15)
+    assert empty_bst.find_parent(empty_bst.root.leftChild)[0].val == 10
