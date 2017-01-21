@@ -200,7 +200,7 @@ class BinarySearchTree(object):
             return
 
         # node to delete has only a right child
-        elif node.rightchild and node.leftChild is None:
+        elif node.rightChild and node.leftChild is None:
             if val < parent.val:
                 parent.leftChild = node.rightChild
             else:

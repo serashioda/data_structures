@@ -237,7 +237,7 @@ def test_delete_two_children_right_child(empty_bst):
     empty_bst.insert(13)
     empty_bst.delete(15)
     in_order_comprension = [num for num in empty_bst.inorder()]
-    assert in_order_comprension == [5, 10, 13, 12, 18]
+    assert in_order_comprension == [5, 10, 12, 13, 18]
 
 
 def test_delete_two_children_not_right_child(empty_bst):
@@ -291,5 +291,5 @@ def test_delete_one_child(empty_bst):
     empty_bst.insert(9)
     empty_bst.insert(13)
     empty_bst.delete(11)
-    in_order_comprension = [num for num in bst_2.inorder()]
-    assert in_order_comprension == [9, 10, 11]
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [9, 10, 13]
