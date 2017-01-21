@@ -143,7 +143,7 @@ class BinarySearchTree(object):
             return None
         elif self.root.val == val:
             if self.root.leftChild is None and self.root.rightChild is None:
-                self.root = None==
+                self.root = None
             elif self.root.leftChild and self.root.rightChild is None:
                 self.root = self.root.leftChild
             elif self.root.rightChild and self.root.rightChild is None:
