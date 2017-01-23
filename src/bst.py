@@ -171,7 +171,7 @@ class BinarySearchTree(object):
                     else:
                         del_node_parent.rightChild = None
 
-            return True
+            return
 
         parent = None
         node = self.root
