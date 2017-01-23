@@ -363,3 +363,20 @@ def test_rotation_right(empty_bst):
     empty_bst.right_rotation(empty_bst.root.rightChild.rightChild)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [10, 30, 20, 60, 15, 50, 90, 40, 70, 90]
+
+
+def test_rotation_left(empty_bst):
+    """Test left rotation on subtree."""
+    empty_bst.insert(20)
+    empty_bst.insert(10)
+    empty_bst.insert(8)
+    empty_bst.insert(9)
+    empty_bst.insert(6)
+    empty_bst.insert(7)
+    empty_bst.insert(4)
+    empty_bst.insert(5)
+    empty_bst.insert(3)
+    empty_bst.insert(2)
+    empty_bst.left_rotation(empty_bst.root.leftChild.leftChild)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [20, 10, 4, 8, 3, 6, 9, 2, 5, 7]
