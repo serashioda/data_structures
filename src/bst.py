@@ -143,6 +143,7 @@ class BinarySearchTree(object):
         if self.root is None:
             return None
         elif self.root.val == val:
+            self._size -= 1
             if self.root.leftChild is None and self.root.rightChild is None:
                 self.root = None
             elif self.root.leftChild and self.root.rightChild is None:
@@ -193,7 +194,6 @@ class BinarySearchTree(object):
                 parent.leftChild = None
             else:
                 parent.rightChild = None
-            return
 
         # node to delete has only a left child
         elif node.leftChild and node.rightChild is None:
@@ -201,7 +201,6 @@ class BinarySearchTree(object):
                 parent.leftChild = node.leftChild
             else:
                 parent.rightChild = node.leftChild
-            return
 
         # node to delete has only a right child
         elif node.rightChild and node.leftChild is None:
@@ -209,7 +208,6 @@ class BinarySearchTree(object):
                 parent.leftChild = node.rightChild
             else:
                 parent.rightChild = node.rightChild
-            return
 
         # node to delete has both left and right children
         else:
@@ -230,3 +228,4 @@ class BinarySearchTree(object):
                     del_node_parent.leftChild = None
                 else:
                     del_node_parent.rightChild = None
+        self._size -= 1
