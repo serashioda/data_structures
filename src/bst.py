@@ -161,6 +161,9 @@ class BinarySearchTree(object):
                         del_node_parent.leftChild = del_node.rightChild
                     elif del_node_parent.val < del_node.val:
                         del_node_parent.rightChild = del_node.rightChild
+                    else:
+                        del_node_parent.rightChild = None
+                        del_node_parent = del_node.rightChild
                 else:
                     if del_node.val < del_node_parent.val:
                         del_node_parent.leftChild = None
@@ -209,24 +212,20 @@ class BinarySearchTree(object):
 
         # node to delete has both left and right children
         else:
-            if self._depth_node(node.leftChild) < self._depth_node(node.rightChild):
-                curr = node.rightChild
-                innermost_direction = 'leftChild'
-                outer_direction = 'rightChild'
-            else:
-                curr = node.leftChild
-                innermost_direction = 'rightChild'
-                outer_direction = 'leftChild'
-            parent = curr
-            while curr:
-                if parent == curr:
-                    replacement_node = curr
-                    curr = getattr(curr, innermost_direction)
-                    continue
-                replacement_node = curr
-                curr = getattr(curr, innermost_direction)
-                if curr:
-                    parent = getattr(parent, innermost_direction)
+            del_node_parent = node
+            del_node = node.rightChild
+            while del_node.leftChild:
+                del_node_parent = del_node
+                del_node = del_node.leftChild
 
-            node.val = replacement_node.val
-            setattr(parent, innermost_direction, getattr(replacement_node, outer_direction))
+            node.val = del_node.val
+            if del_node.rightChild:
+                if del_node_parent.val > del_node.val:
+                    del_node_parent.leftChild = del_node.rightChild
+                elif del_node_parent.val < del_node.val:
+                    del_node_parent.rightChild = del_node.rightChild
+            else:
+                if del_node.val < del_node_parent.val:
+                    del_node_parent.leftChild = None
+                else:
+                    del_node_parent.rightChild = None
