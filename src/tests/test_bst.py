@@ -346,3 +346,20 @@ def test_delete_leaf_node_left_subtree(empty_bst):
     empty_bst.delete(7)
     in_order_comprension = [num for num in empty_bst.inorder()]
     assert in_order_comprension == [9, 10, 11, 13]
+
+
+def test_rotation_right(empty_bst):
+    """Test right rotation on subtree."""
+    empty_bst.insert(10)
+    empty_bst.insert(30)
+    empty_bst.insert(20)
+    empty_bst.insert(15)
+    empty_bst.insert(80)
+    empty_bst.insert(60)
+    empty_bst.insert(70)
+    empty_bst.insert(50)
+    empty_bst.insert(40)
+    empty_bst.insert(90)
+    empty_bst.right_rotation(empty_bst.root.rightChild.rightChild)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [10, 30, 20, 60, 15, 50, 90, 40, 70, 90]
