@@ -24,11 +24,12 @@ class BinarySearchTree(object):
 
     def insert(self, val):
         """Insert value into Binary Search Tree."""
-        if not self.root:
-            self.root = Node(val)
-        else:
-            self._insert_node(val, self.root)
-        self._size += 1
+        if not self.contains(val):
+            if not self.root:
+                self.root = Node(val)
+            else:
+                self._insert_node(val, self.root)
+            self._size += 1
 
     def _insert_node(self, val, node):
         """Insert a node when not at the root."""
