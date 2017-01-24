@@ -375,15 +375,27 @@ def test_left_rotation_not_root(empty_bst):
 
 
 def test_right_rotation_not_root(empty_bst):
-    """Test right rotation on simple tree."""
+    """Test left rotation on simple tree."""
     empty_bst.insert(5)
     empty_bst.insert(4)
     empty_bst.insert(3)
-    empty_bst.rightChild(empty_bst.root)
+    empty_bst.right_rotation(empty_bst.root)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [4, 3, 5]
     empty_bst.insert(2)
     empty_bst.insert(1)
-    empty_bst.rightChild(empty_bst.root.leftChild)
+    empty_bst.right_rotation(empty_bst.root.leftChild)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [4, 2, 5, 1, 3]
+
+
+# def test_right_rotation():
+#     """Test right rotation."""
+#     empty_bst.insert('Q')
+#     empty_bst.insert('P')
+#     empty_bst.insert('C')
+#     empty_bst.insert('A')
+#     empty_bst.insert('C')
+#     empty_bst.rightChild(empty_bst.root.leftChild)
+#     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+#     assert breadthfirst_comprension == [4, 2, 5, 1, 3]

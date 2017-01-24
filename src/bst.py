@@ -282,8 +282,8 @@ class BinarySearchTree(object):
                 right_rotation()
 
 
-    def right_rotation(self, node):
-        """Right rotation."""
+    def left_rotation(self, node):
+        """Left rotation."""
         if self.root == node:
             self.root = node.rightChild
             node.rightChild = None
@@ -304,8 +304,8 @@ class BinarySearchTree(object):
             temp_node.leftChild = node
             node.rightChild = None
 
-    def left_rotation(self, node):
-        """Left rotation."""
+    def right_rotation(self, node):
+        """Right rotation."""
         if self.root == node:
             self.root = node.leftChild
             node.leftChild = None
