@@ -26,7 +26,8 @@ class HashTable(object):
 
     def set(self, key, val):
         """Store the given val using the given key."""
-        pass
+        hash_num = self._hash(key) % len(self.table)
+        self.table[hash_num].append((key, val))
 
     def get(self, key):
         """Return the value stored with the given key."""
