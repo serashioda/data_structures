@@ -11,10 +11,17 @@ class HashTable(object):
             self.table.append([])
 
     def _hash(self, key):
-        """Sash the key provided and return."""
+        """Hash the key provided and return."""
         hash_val = 0
         for char in key:
             hash_val += ord(char)
+        return hash_val
+
+    def _xor_hash(self, key):
+        """XOR hash the key provided and return."""
+        hash_val = 0
+        for char in key:
+            hash_val ^= ord(char)
         return hash_val
 
     def set(self, key, val):
