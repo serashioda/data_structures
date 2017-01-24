@@ -229,3 +229,47 @@ class BinarySearchTree(object):
                 else:
                     del_node_parent.rightChild = None
         self._size -= 1
+
+    def right_rotation(self, node):
+        """Right rotation."""
+        if self.root == node:
+            self.root = node.rightChild
+            node.rightChild = None
+            self.root.leftChild = node
+        else:
+            parent = self.root
+            while parent:
+                if parent.rightChild == node:
+                    break
+                elif parent.leftChild == node:
+                    break
+                elif node.val > parent.val:
+                    parent = parent.rightChild
+                else:
+                    parent = parent.leftChild
+            temp_node = node.rightChild
+            parent.rightChild = temp_node
+            temp_node.leftChild = node
+            node.rightChild = None
+
+    def left_rotation(self, node):
+        """Left rotation."""
+        if self.root == node:
+            self.root = node.leftChild
+            node.leftChild = None
+            self.root.rightChild = node
+        else:
+            parent = self.root
+            while parent:
+                if parent.rightChild == node:
+                    break
+                elif parent.leftChild == node:
+                    break
+                elif node.val > parent.val:
+                    parent = parent.rightChild
+                else:
+                    parent = parent.leftChild
+            temp_node = node.leftChild
+            parent.leftChild = temp_node
+            temp_node.rightChild = node
+            node.leftChild = None
