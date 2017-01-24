@@ -359,31 +359,31 @@ def test_delete_leaf_node_left_subtree(empty_bst):
 #     assert breadthfirst_comprension == [2, 1, 3]
 
 
-def test_right_rotation_not_root(empty_bst):
-    """Test right rotation on simple tree."""
+def test_left_rotation_not_root(empty_bst):
+    """Test left rotation on simple tree."""
     empty_bst.insert(1)
     empty_bst.insert(2)
     empty_bst.insert(3)
-    empty_bst.right_rotation(empty_bst.root)
+    empty_bst.left_rotation(empty_bst.root)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [2, 1, 3]
     empty_bst.insert(4)
     empty_bst.insert(5)
-    empty_bst.right_rotation(empty_bst.root.rightChild)
+    empty_bst.left_rotation(empty_bst.root.rightChild)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [2, 1, 4, 3, 5]
 
 
-def test_left_rotation_not_root(empty_bst):
-    """Test left rotation on simple tree."""
+def test_right_rotation_not_root(empty_bst):
+    """Test right rotation on simple tree."""
     empty_bst.insert(5)
     empty_bst.insert(4)
     empty_bst.insert(3)
-    empty_bst.left_rotation(empty_bst.root)
+    empty_bst.rightChild(empty_bst.root)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [4, 3, 5]
     empty_bst.insert(2)
     empty_bst.insert(1)
-    empty_bst.left_rotation(empty_bst.root.leftChild)
+    empty_bst.rightChild(empty_bst.root.leftChild)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [4, 2, 5, 1, 3]
