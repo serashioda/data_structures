@@ -31,4 +31,7 @@ class HashTable(object):
 
     def get(self, key):
         """Return the value stored with the given key."""
-        pass
+        hash_num = self._hash(key) % len(self.table)
+        for k, v in self.table[hash_num]:
+            if k == key:
+                return (k, v)

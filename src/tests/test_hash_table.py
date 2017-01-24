@@ -31,3 +31,12 @@ def test_hash_table_xor_hash_method_diff():
     hash_table = HashTable(10)
     hash_num = hash_table._xor_hash('hello_bob')
     assert hash_num == 82
+
+def test_hash_table_set_method():
+    """Test set method."""
+    from hash_table import HashTable
+    hash_table = HashTable(10)
+    hash_num = has_table._hash('hello_world')
+    num = hash_num % len(hash_table.table)
+    hash_table.set('hello_world', 4)
+    assert hash_table.table[num] == [('hello world', 4)]
