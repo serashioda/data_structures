@@ -219,7 +219,8 @@ def test_post_order_diffrent(bst_2):
     in_order_comprension = [num for num in bst_2.postorder()]
     assert in_order_comprension == [4, 11, 5, 26, 14, 3, 74, 94, 52, 40, 36]
 
-def test_delete_root(empty_bst):
+
+def test_delete_one_node(empty_bst):
     """Test delete on one node in bst."""
     empty_bst.insert(1)
     empty_bst.delete(1)
@@ -236,7 +237,7 @@ def test_delete_two_children_right_child(empty_bst):
     empty_bst.insert(13)
     empty_bst.delete(15)
     in_order_comprension = [num for num in empty_bst.inorder()]
-    assert in_order_comprension == [5, 10, 13, 12, 18]
+    assert in_order_comprension == [5, 10, 12, 13, 18]
 
 
 def test_delete_two_children_not_right_child(empty_bst):
@@ -251,16 +252,138 @@ def test_delete_two_children_not_right_child(empty_bst):
     assert in_order_comprension == [5, 10, 12, 18]
 
 
-def test_delete(bst_1):
-    """Test delete."""
-    bst_1.delete(8)
-    # bst_1.delete(4)
+def test_delete_root_bst_1(bst_1):
+    """Test delete root on bst_1."""
     in_order_comprension = [num for num in bst_1.inorder()]
-    assert in_order_comprension == [1, 3, 4, 6, 7, 8, 10, 13, 14]
+    assert 8 in in_order_comprension
+    bst_1.delete(8)
+    assert 8 not in [num for num in bst_1.inorder()]
 
 
-def test_parent(empty_bst):
+def test_delete_root_bst_2(bst_2):
+    """Test delete root on bst_2."""
+    in_order_comprension = [num for num in bst_2.inorder()]
+    assert 36 in in_order_comprension
+    bst_2.delete(36)
+    assert 36 not in [num for num in bst_2.inorder()]
+
+
+def test_delete_bst_1(bst_1):
+    """Test delete on bst_1."""
+    bst_1.delete(8)
+    bst_1.delete(10)
+    bst_1.delete(3)
+    bst_1.delete(6)
+    bst_1.delete(1)
+    bst_1.delete(14)
+    bst_1.delete(4)
+    bst_1.delete(7)
+    bst_1.delete(13)
+    in_order_comprension = [num for num in bst_1.inorder()]
+    assert in_order_comprension == []
+
+
+def test_delete_bst_2(bst_2):
+    """Test delete on bst_2."""
+    bst_2.delete(36)
+    bst_2.delete(3)
+    bst_2.delete(14)
+    bst_2.delete(26)
+    bst_2.delete(5)
+    bst_2.delete(4)
+    bst_2.delete(11)
+    bst_2.delete(40)
+    bst_2.delete(52)
+    bst_2.delete(94)
+    bst_2.delete(74)
+    in_order_comprension = [num for num in bst_2.inorder()]
+    assert in_order_comprension == []
+
+
+def test_delete_one_child_right_subtree(empty_bst):
+    """Test delete has one child in roots right subtree."""
     empty_bst.insert(10)
+    empty_bst.insert(11)
+    empty_bst.insert(9)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    empty_bst.delete(11)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [7, 9, 10, 13]
+
+
+def test_delete_one_child_left_subtree(empty_bst):
+    """Test delete has one child in roots left subtree."""
+    empty_bst.insert(10)
+    empty_bst.insert(11)
+    empty_bst.insert(9)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    empty_bst.delete(9)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [7, 10, 11, 13]
+
+
+def test_delete_leaf_node_right_subtree(empty_bst):
+    """Test delete leaf node."""
+    empty_bst.insert(10)
+    empty_bst.insert(11)
+    empty_bst.insert(9)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    empty_bst.delete(13)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [7, 9, 10, 11]
+
+
+def test_delete_leaf_node_left_subtree(empty_bst):
+    """Test delete leaf node."""
+    empty_bst.insert(10)
+    empty_bst.insert(11)
+    empty_bst.insert(9)
+    empty_bst.insert(7)
+    empty_bst.insert(13)
+    empty_bst.delete(7)
+    in_order_comprension = [num for num in empty_bst.inorder()]
+    assert in_order_comprension == [9, 10, 11, 13]
+
+
+# def test_left_rotation_root(empty_bst):
+#     """Test left rotation on simple tree."""
+#     empty_bst.insert(1)
+#     empty_bst.insert(2)
+#     empty_bst.insert(3)
+#     empty_bst.left_rotation(empty_bst.root)
+#     # import pdb; pdb.set_trace()
+#     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+#     assert breadthfirst_comprension == [2, 1, 3]
+
+
+def test_left_rotation_not_root(empty_bst):
+    """Test left rotation on simple tree."""
+    empty_bst.insert(1)
+    empty_bst.insert(2)
+    empty_bst.insert(3)
+    empty_bst.left_rotation(empty_bst.root)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [2, 1, 3]
+    empty_bst.insert(4)
     empty_bst.insert(5)
-    empty_bst.insert(15)
-    assert empty_bst.find_parent(empty_bst.root.leftChild)[0].val == 10
+    empty_bst.left_rotation(empty_bst.root.rightChild)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [2, 1, 4, 3, 5]
+
+
+def test_right_rotation_not_root(empty_bst):
+    """Test right rotation on simple tree."""
+    empty_bst.insert(5)
+    empty_bst.insert(4)
+    empty_bst.insert(3)
+    empty_bst.rightChild(empty_bst.root)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [4, 3, 5]
+    empty_bst.insert(2)
+    empty_bst.insert(1)
+    empty_bst.rightChild(empty_bst.root.leftChild)
+    breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+    assert breadthfirst_comprension == [4, 2, 5, 1, 3]

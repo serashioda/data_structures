@@ -24,11 +24,12 @@ class BinarySearchTree(object):
 
     def insert(self, val):
         """Insert value into Binary Search Tree."""
-        if not self.root:
-            self.root = Node(val)
-        else:
-            self._insert_node(val, self.root)
-        self._size += 1
+        if not self.contains(val):
+            if not self.root:
+                self.root = Node(val)
+            else:
+                self._insert_node(val, self.root)
+            self._size += 1
 
     def _insert_node(self, val, node):
         """Insert a node when not at the root."""
@@ -144,8 +145,9 @@ class BinarySearchTree(object):
         if self.root is None:
             return None
         elif self.root.val == val:
+            self._size -= 1
             if self.root.leftChild is None and self.root.rightChild is None:
-                self.root = None==
+                self.root = None
             elif self.root.leftChild and self.root.rightChild is None:
                 self.root = self.root.leftChild
             elif self.root.rightChild and self.root.rightChild is None:
@@ -163,13 +165,16 @@ class BinarySearchTree(object):
                         del_node_parent.leftChild = del_node.rightChild
                     elif del_node_parent.val < del_node.val:
                         del_node_parent.rightChild = del_node.rightChild
+                    else:
+                        del_node_parent.rightChild = None
+                        del_node_parent = del_node.rightChild
                 else:
                     if del_node.val < del_node_parent.val:
                         del_node_parent.leftChild = None
                     else:
                         del_node_parent.rightChild = None
 
-            return True
+            return
 
         parent = None
         node = self.root
@@ -191,7 +196,6 @@ class BinarySearchTree(object):
                 parent.leftChild = None
             else:
                 parent.rightChild = None
-            return
 
         # node to delete has only a left child
         elif node.leftChild and node.rightChild is None:
@@ -199,15 +203,13 @@ class BinarySearchTree(object):
                 parent.leftChild = node.leftChild
             else:
                 parent.rightChild = node.leftChild
-            return
 
         # node to delete has only a right child
-        elif node.rightchild and node.leftChild is None:
+        elif node.rightChild and node.leftChild is None:
             if val < parent.val:
                 parent.leftChild = node.rightChild
             else:
                 parent.rightChild = node.rightChild
-            return
 
         # node to delete has both left and right children
         else:
@@ -241,10 +243,8 @@ class BinarySearchTree(object):
         pivot = parent.left
         grandparent.rightChild = parent
 
-       
     def left_rotation(self, subtree_root):
         """Left rotation given root and pivot nodes."""
-        
 
     def tree_balance(self, node):
         """Check tree balance."""
@@ -280,3 +280,48 @@ class BinarySearchTree(object):
             tree_balance = abs(balance_lst_left.size() - balance_lst_right.size())
             if tree_balance > 1:
                 right_rotation()
+
+
+    def right_rotation(self, node):
+        """Right rotation."""
+        if self.root == node:
+            self.root = node.rightChild
+            node.rightChild = None
+            self.root.leftChild = node
+        else:
+            parent = self.root
+            while parent:
+                if parent.rightChild == node:
+                    break
+                elif parent.leftChild == node:
+                    break
+                elif node.val > parent.val:
+                    parent = parent.rightChild
+                else:
+                    parent = parent.leftChild
+            temp_node = node.rightChild
+            parent.rightChild = temp_node
+            temp_node.leftChild = node
+            node.rightChild = None
+
+    def left_rotation(self, node):
+        """Left rotation."""
+        if self.root == node:
+            self.root = node.leftChild
+            node.leftChild = None
+            self.root.rightChild = node
+        else:
+            parent = self.root
+            while parent:
+                if parent.rightChild == node:
+                    break
+                elif parent.leftChild == node:
+                    break
+                elif node.val > parent.val:
+                    parent = parent.rightChild
+                else:
+                    parent = parent.leftChild
+            temp_node = node.leftChild
+            parent.leftChild = temp_node
+            temp_node.rightChild = node
+            node.leftChild = None
