@@ -49,3 +49,4 @@ def test_has_table_get_method():
     hash_table = HashTable(10)
     hash_table.set('hello_potato', 5)
     assert hash_table.get('hello_potato') == ('hello_potato', 5)
+
