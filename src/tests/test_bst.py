@@ -387,3 +387,8 @@ def test_right_rotation_not_root(empty_bst):
     empty_bst.rightChild(empty_bst.root.leftChild)
     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
     assert breadthfirst_comprension == [4, 2, 5, 1, 3]
+
+
+def test_right_rotation():
+    """Test right rotation."""
+    
