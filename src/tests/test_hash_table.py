@@ -1,23 +1,17 @@
 """Tests for Hash Table ."""
 
 
-class HashTable(object):
-    """Class HashTable."""
+def test_hash_table_hash_method():
+    """Test hash method."""
+    from hash_table import HashTable
+    hash_table = HashTable(10)
+    hash_num = hash_table._hash('hello_world')
+    assert hash_num == 1179
 
-    def __init__(self, num):
-        """Initialize with number of slots to be in table."""
-        self.table = []
-        for x in range(0, num):
-            self.table.append([])
 
-    def _hash(self, key):
-        """Sash the key provided and return."""
-        pass
-
-    def set(self, key, val):
-        """Store the given val using the given key."""
-        pass
-
-    def get(self, key):
-        """Return the value stored with the given key."""
-        pass
+def test_hash_table_hash_method_diff():
+    """Test hash method on diffrent key."""
+    from hash_table import HashTable
+    hash_table = HashTable(10)
+    hash_num = hash_table._hash('hello_bob')
+    assert hash_num == 934
