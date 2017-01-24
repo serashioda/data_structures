@@ -137,6 +137,8 @@ class BinarySearchTree(object):
                 yield node.val
                 node = node.rightChild
 
+   # Delete Node
+
     def delete(self, val):
         """Delete a node."""
         if self.root is None:
@@ -230,3 +232,51 @@ class BinarySearchTree(object):
 
             node.val = replacement_node.val
             setattr(parent, innermost_direction, getattr(replacement_node, outer_direction))
+
+    # Rotations
+
+    def right_rotation(self, subtree_root):
+        """Right rotation given root and pivot nodes."""
+        parent = subtree_root
+        pivot = parent.left
+        grandparent.rightChild = parent
+
+       
+    def left_rotation(self, subtree_root):
+        """Left rotation given root and pivot nodes."""
+        
+
+    def tree_balance(self, node):
+        """Check tree balance."""
+        while node:
+            tree_bal = self.balance(node)
+            if abs(tree_bal) > 1:
+                self.balance_tree(node, tree_bal)
+            node = node.parent
+
+    def balance_tree(self, start_node, bal):
+        """Balance the subtree."""
+        balance_lst_left = []
+        balance_lst_right = []
+        curr = self.root
+
+        if tree_bal > 0:
+            while curr:
+                if _insert_node.val > curr.val:
+                    curr = curr.right
+                    balance_lst_right.append(curr)
+                else:
+                    curr = curr.left
+                    balance_lst_left.append(curr)
+
+            while balance_lst_left.size():
+                node = balance_lst_left.pop()
+            return balance_lst_left.size()
+
+            while balance_lst_right.size():
+                node = balance_lst_right.pop()
+            return balance_lst_right.size()
+
+            tree_balance = abs(balance_lst_left.size() - balance_lst_right.size())
+            if tree_balance > 1:
+                right_rotation()
