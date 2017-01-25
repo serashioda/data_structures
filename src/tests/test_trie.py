@@ -54,3 +54,8 @@ def test_insert_5_words(empty_trie):
 def test_contains_random(full_trie):
     """Test contains method on random 200 words."""
     assert full_trie[0].contains(random.choice(full_trie[1]))
+
+
+def test_size(full_trie):
+    """Test size method returns 200 on 200 size trie."""
+    assert full_trie[0].size() == 200
