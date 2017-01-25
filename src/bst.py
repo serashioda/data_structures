@@ -24,25 +24,25 @@ class BinarySearchTree(object):
 
     def insert(self, val):
         """Insert value into Binary Search Tree."""
-        if not self.contains(val):
-            if not self.root:
-                self.root = Node(val)
+        if self.root is None:
+            self.root = Node(val)
+            self._size = 1
+            return
+        node = Node(val)
+        trv = []
+        curr_node = self.root
+        while curr_node:
+            trv.append(curr_node)
+            if val > curr_node.val:
+                curr_node = curr_node.rightChild
             else:
-                self._insert_node(val, self.root)
-            self._size += 1
+                curr_node = curr_node.leftChild
 
-    def _insert_node(self, val, node):
-        """Insert a node when not at the root."""
-        if val < node.val:
-            if node.leftChild:
-                self._insert_node(val, node.leftChild)
-            else:
-                node.leftChild = Node(val)
+        if node.val > trv[-1].val:
+            trv[-1].rightChild = node
         else:
-            if node.rightChild:
-                self._insert_node(val, node.rightChild)
-            else:
-                node.rightChild = Node(val)
+            trv[-1].leftChild = node
+        self._size += 1
 
     def depth(self):
         """Call helper depth method."""
