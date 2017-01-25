@@ -27,3 +27,7 @@ class Trie(object):
         if "$" in current:
             return True
         return False
+
+    def size(self):
+        """Return size of trie."""
+        return self._size
