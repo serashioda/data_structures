@@ -43,6 +43,8 @@ class BinarySearchTree(object):
         else:
             trv[-1].leftChild = node
         self._size += 1
+        trv.append(node)
+        return trv[::-1]
 
     def depth(self):
         """Call helper depth method."""
@@ -237,14 +239,14 @@ class BinarySearchTree(object):
 
     # Rotations
 
-    def right_rotation(self, subtree_root):
-        """Right rotation given root and pivot nodes."""
-        parent = subtree_root
-        pivot = parent.left
-        grandparent.rightChild = parent
+    # def right_rotation(self, subtree_root):
+    #     """Right rotation given root and pivot nodes."""
+    #     parent = subtree_root
+    #     pivot = parent.left
+    #     grandparent.rightChild = parent
 
-    def left_rotation(self, subtree_root):
-        """Left rotation given root and pivot nodes."""
+    # def left_rotation(self, subtree_root):
+    #     """Left rotation given root and pivot nodes."""
 
     def tree_balance(self, node):
         """Check tree balance."""
@@ -280,7 +282,6 @@ class BinarySearchTree(object):
             tree_balance = abs(balance_lst_left.size() - balance_lst_right.size())
             if tree_balance > 1:
                 right_rotation()
-
 
     def left_rotation(self, node):
         """Left rotation."""
@@ -325,3 +326,14 @@ class BinarySearchTree(object):
             parent.leftChild = temp_node
             temp_node.rightChild = node
             node.leftChild = None
+
+    def balance(self, trv):
+        """Balance shit."""
+        node_to_rotatate = None
+        val = None
+        for idx, node in enumerate(trv):
+            if not trv[-1] == node:
+                curr_num = (self._depth_node(trv[idx]) - 1) - (self._depth_node(trv[idx + 1]) - 1)
+                if curr_num is not None and (curr_num - val) > 1:
+                    print(curr_num, node.val)
+        s
