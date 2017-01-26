@@ -21,8 +21,6 @@ class Trie(object):
         """Return True if string in the trie."""
         current = self.root
         for char in string.lower():
-            if char not in current:
-                return False
             current = current[char]
         if "$" in current:
             return True
@@ -31,3 +29,13 @@ class Trie(object):
     def size(self):
         """Return size of trie."""
         return self._size
+
+    def remove(self, string):
+        """Remove given string from the trie. Raise excepion if word doesn't exist."""
+        current = self.root
+        for idx, char in enumerate(string.lower()):
+            if (idx + 1) == len(string) and '$' in current[string[-1]]:
+                del current[string[-1]]['$']
+                return
+            current = current[char]
+        raise KeyError("Cannot remove string not in trie")

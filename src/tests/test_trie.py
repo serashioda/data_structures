@@ -59,3 +59,10 @@ def test_contains_random(full_trie):
 def test_size(full_trie):
     """Test size method returns 200 on 200 size trie."""
     assert full_trie[0].size() == 200
+
+
+def test_remove(full_trie):
+    """Test removing string from tried."""
+    word = random.choice(full_trie[1])
+    full_trie[0].remove(word)
+    assert not full_trie[0].contains(word)
