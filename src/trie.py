@@ -21,8 +21,8 @@ class Trie(object):
         """Return True if string in the trie."""
         current = self.root
         for char in string.lower():
-            if char not in current:
-                return False
+            # if char not in current:
+            #     return False
             current = current[char]
         if "$" in current:
             return True
@@ -31,3 +31,18 @@ class Trie(object):
     def size(self):
         """Return size of trie."""
         return self._size
+
+    def _return_dict(self, string):
+        current = self.root
+        for char in string.lower():
+            current = current[char]
+        if "$" in current:
+            return True
+        return current
+
+    def traverse(self, dict):
+        """Return path."""
+
+    def depth_first_traversal(self, string):
+        """."""
+        return self.traverse(self._return_dict(string))
