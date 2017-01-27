@@ -66,23 +66,6 @@ class Trie(object):
 
         return (y for y in result)
 
-        # import pdb; pdb.set_trace()
-        # while not_visited:
-        #     pprint(not_visited)
-        #     print('\n')
-        #     import pdb; pdb.set_trace()
-        #     cur = not_visited.pop()
-        #     word = string
-        #     for sub_tree in cur:
-        #         if sub_tree is not '$':
-        #             path.append(sub_tree)
-        #             word += sub_tree
-        #             not_visited.append(cur[sub_tree])
-        #         else:
-        #             print(word)
-        #             import pdb; pdb.set_trace()
-        # print(path)
-
     def get_words(self, word, trie, result):
         """."""
         for group in trie:
