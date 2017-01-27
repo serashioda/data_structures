@@ -66,3 +66,12 @@ def test_remove(full_trie):
     word = random.choice(full_trie[1])
     full_trie[0].remove(word)
     assert not full_trie[0].contains(word)
+
+
+def test(empty_trie):
+    """."""
+    empty_trie.insert('teapot')
+    empty_trie.insert('teabag')
+    empty_trie.insert('teabat')
+    empty_trie.depth_first_traversal('tea')
+    assert False
