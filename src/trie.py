@@ -48,10 +48,7 @@ class Trie(object):
             return True
         return current
 
-    def traverse(self, dict):
-        """Return path."""
-
-    def depth_first_traversal(self, string):
+    def traverse(self, string):
         """."""
         from pprint import pprint
         current = self.root
@@ -61,13 +58,39 @@ class Trie(object):
             return True
         path = []
         not_visited = [{a: current[a]} for a in current]
+
+        result = []
+        self.get_words(string, not_visited, result)
+
+        pprint(result)
+
+        return (y for y in result)
+
         # import pdb; pdb.set_trace()
-        while not_visited:
-            pprint(not_visited)
-            print('\n')
-            cur = not_visited.pop()
-            for sub_tree in cur:
-                if sub_tree is not '$':
-                    path.append(sub_tree)
-                    not_visited.append(cur[sub_tree])
-        print(path)
+        # while not_visited:
+        #     pprint(not_visited)
+        #     print('\n')
+        #     import pdb; pdb.set_trace()
+        #     cur = not_visited.pop()
+        #     word = string
+        #     for sub_tree in cur:
+        #         if sub_tree is not '$':
+        #             path.append(sub_tree)
+        #             word += sub_tree
+        #             not_visited.append(cur[sub_tree])
+        #         else:
+        #             print(word)
+        #             import pdb; pdb.set_trace()
+        # print(path)
+
+    def get_words(self, word, trie, result):
+        """."""
+        for group in trie:
+            # import pdb; pdb.set_trace()
+
+            for letter in group:
+                if letter is "$":
+                    result.append(word)
+                else:
+                    # import pdb; pdb.set_trace()
+                    self.get_words(word + letter, [group[letter]], result)

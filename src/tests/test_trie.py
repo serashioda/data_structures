@@ -80,5 +80,7 @@ def test(empty_trie):
     empty_trie.insert('teapot')
     empty_trie.insert('teabag')
     empty_trie.insert('teabat')
-    empty_trie.depth_first_traversal('tea')
-    assert False
+    words = empty_trie.traverse('tea')
+    for word in words:
+        assert word in ['teabat', 'teabag', 'teapot']
+        print(word)
