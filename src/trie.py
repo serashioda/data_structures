@@ -31,7 +31,7 @@ class Trie(object):
         return self._size
 
     def remove(self, string):
-        """Remove given string from the trie. Raise excepion if word doesn't exist."""
+        """Remove given string from trie. Raise excepion if non-existant."""
         current = self.root
         for idx, char in enumerate(string.lower()):
             if (idx + 1) == len(string) and '$' in current[string[-1]]:
