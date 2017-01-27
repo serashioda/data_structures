@@ -66,3 +66,11 @@ def test_remove(full_trie):
     word = random.choice(full_trie[1])
     full_trie[0].remove(word)
     assert not full_trie[0].contains(word)
+
+def test_remove_error(empty_trie):
+    """Test removing string
+     from tried."""
+    empty_trie.insert('amos')
+    empty_trie.insert('soma')
+    with pytest.raises(KeyError):
+        empty_trie.remove('apples')
