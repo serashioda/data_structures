@@ -39,35 +39,3 @@ class Trie(object):
                 return
             current = current[char]
         raise KeyError("Cannot remove string not in trie")
-
-    def _return_dict(self, string):
-        current = self.root
-        for char in string.lower():
-            current = current[char]
-        if "$" in current:
-            return True
-        return current
-
-    def traverse(self, dict):
-        """Return path."""
-
-    def depth_first_traversal(self, string):
-        """."""
-        from pprint import pprint
-        current = self.root
-        for char in string.lower():
-            current = current[char]
-        if "$" in current:
-            return True
-        path = []
-        not_visited = [{a: current[a]} for a in current]
-        # import pdb; pdb.set_trace()
-        while not_visited:
-            pprint(not_visited)
-            print('\n')
-            cur = not_visited.pop()
-            for sub_tree in cur:
-                if sub_tree is not '$':
-                    path.append(sub_tree)
-                    not_visited.append(cur[sub_tree])
-        print(path)
