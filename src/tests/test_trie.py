@@ -74,3 +74,11 @@ def test_remove_error(empty_trie):
     empty_trie.insert('soma')
     with pytest.raises(KeyError):
         empty_trie.remove('apples')
+
+def test(empty_trie):
+    """."""
+    empty_trie.insert('teapot')
+    empty_trie.insert('teabag')
+    empty_trie.insert('teabat')
+    empty_trie.depth_first_traversal('tea')
+    assert False
