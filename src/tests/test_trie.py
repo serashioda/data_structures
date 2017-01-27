@@ -67,18 +67,10 @@ def test_remove(full_trie):
     full_trie[0].remove(word)
     assert not full_trie[0].contains(word)
 
+
 def test_remove_error(empty_trie):
-    """Test removing string
-     from tried."""
+    """Test removing string xfrom trie."""
     empty_trie.insert('amos')
     empty_trie.insert('soma')
     with pytest.raises(KeyError):
         empty_trie.remove('apples')
-
-def test(empty_trie):
-    """."""
-    empty_trie.insert('teapot')
-    empty_trie.insert('teabag')
-    empty_trie.insert('teabat')
-    empty_trie.depth_first_traversal('tea')
-    assert False
