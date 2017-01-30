@@ -1,5 +1,5 @@
 """Module with implementation of Weighted Graph."""
-from queue import Queue
+from my_queue import Queue
 from stack import Stack
 from collections import OrderedDict
 
