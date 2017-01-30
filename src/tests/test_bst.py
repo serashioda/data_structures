@@ -430,3 +430,22 @@ def test_right_rotation_not_root(empty_bst):
     assert breadthfirst_comprension == [4, 2, 5, 1, 3]
 
 
+# def test_right_rotation():
+#     """Test right rotation."""
+#     empty_bst.insert('Q')
+#     empty_bst.insert('P')
+#     empty_bst.insert('C')
+#     empty_bst.insert('A')
+#     empty_bst.insert('C')
+#     empty_bst.rightChild(empty_bst.root.leftChild)
+#     breadthfirst_comprension = [num for num in empty_bst.breadthfirst()]
+#     assert breadthfirst_comprension == [4, 2, 5, 1, 3]
+
+def test_insert_and_stuff(empty_bst):
+    """."""
+    empty_bst.insert(1)
+    empty_bst.insert(2)
+    ls = empty_bst.insert(3)
+    empty_bst.balance(ls)
+
+

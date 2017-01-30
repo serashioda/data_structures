@@ -24,25 +24,27 @@ class BinarySearchTree(object):
 
     def insert(self, val):
         """Insert value into Binary Search Tree."""
-        if not self.contains(val):
-            if not self.root:
-                self.root = Node(val)
+        if self.root is None:
+            self.root = Node(val)
+            self._size = 1
+            return
+        node = Node(val)
+        trv = []
+        curr_node = self.root
+        while curr_node:
+            trv.append(curr_node)
+            if val > curr_node.val:
+                curr_node = curr_node.rightChild
             else:
-                self._insert_node(val, self.root)
-            self._size += 1
+                curr_node = curr_node.leftChild
 
-    def _insert_node(self, val, node):
-        """Insert a node when not at the root."""
-        if val < node.val:
-            if node.leftChild:
-                self._insert_node(val, node.leftChild)
-            else:
-                node.leftChild = Node(val)
+        if node.val > trv[-1].val:
+            trv[-1].rightChild = node
         else:
-            if node.rightChild:
-                self._insert_node(val, node.rightChild)
-            else:
-                node.rightChild = Node(val)
+            trv[-1].leftChild = node
+        self._size += 1
+        trv.append(node)
+        return trv[::-1]
 
     def depth(self):
         """Call helper depth method."""
@@ -281,7 +283,6 @@ class BinarySearchTree(object):
             if tree_balance > 1:
                 right_rotation()
 
-
     def left_rotation(self, node):
         """Left rotation."""
         if self.root == node:
@@ -325,3 +326,13 @@ class BinarySearchTree(object):
             parent.leftChild = temp_node
             temp_node.rightChild = node
             node.leftChild = None
+
+    def balance(self, trv):
+        """Balance shit."""
+        node_to_rotatate = None
+        val = None
+        for idx, node in enumerate(trv):
+            if not trv[-1] == node:
+                curr_num = (self._depth_node(trv[idx]) - 1) - (self._depth_node(trv[idx + 1]) - 1)
+                if curr_num is not None and (curr_num - val) > 1:
+                    print(curr_num, node.val)
