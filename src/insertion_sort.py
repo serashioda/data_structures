@@ -17,5 +17,6 @@ def insertion_sort(numbers):
                 numbers[idx] = num_sort
                 print(numbers[find_op(idx_2, num_sorted)], num)
                 numbers[find_op(idx_2, num_sorted)] = num
+                idx = find_op(idx_2, num_sorted)
                 print('Replace', numbers)
     return numbers
