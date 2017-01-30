@@ -237,14 +237,14 @@ class BinarySearchTree(object):
 
     # Rotations
 
-    def right_rotation(self, subtree_root):
-        """Right rotation given root and pivot nodes."""
-        parent = subtree_root
-        pivot = parent.left
-        grandparent.rightChild = parent
+    # def right_rotation(self, subtree_root):
+    #     """Right rotation given root and pivot nodes."""
+    #     parent = subtree_root
+    #     pivot = parent.left
+    #     grandparent.rightChild = parent
 
-    def left_rotation(self, subtree_root):
-        """Left rotation given root and pivot nodes."""
+    # def left_rotation(self, subtree_root):
+    #     """Left rotation given root and pivot nodes."""
 
     def tree_balance(self, node):
         """Check tree balance."""
