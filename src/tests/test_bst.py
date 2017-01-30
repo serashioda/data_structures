@@ -447,5 +447,3 @@ def test_insert_and_stuff(empty_bst):
     empty_bst.insert(2)
     ls = empty_bst.insert(3)
     empty_bst.balance(ls)
-
-

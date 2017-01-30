@@ -140,7 +140,7 @@ class BinarySearchTree(object):
                 yield node.val
                 node = node.rightChild
 
-   # Delete Node
+    # Delete Node
 
     def delete(self, val):
         """Delete a node."""
@@ -239,15 +239,6 @@ class BinarySearchTree(object):
 
     # Rotations
 
-    # def right_rotation(self, subtree_root):
-    #     """Right rotation given root and pivot nodes."""
-    #     parent = subtree_root
-    #     pivot = parent.left
-    #     grandparent.rightChild = parent
-
-    # def left_rotation(self, subtree_root):
-    #     """Left rotation given root and pivot nodes."""
-
     def tree_balance(self, node):
         """Check tree balance."""
         while node:
@@ -328,7 +319,7 @@ class BinarySearchTree(object):
             node.leftChild = None
 
     def balance(self, trv):
-        """Balance shit."""
+        """Balance tree."""
         node_to_rotatate = None
         val = None
         for idx, node in enumerate(trv):
