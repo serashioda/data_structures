@@ -47,4 +47,4 @@ if __name__ == '__main__':  # pragma: no cover
         setup='from __main__ import merge_sort',
         number=1000,
     )
-    print('The average time for merge_sort after 1000 times ran:' + str(insertion))
+    print('The average time for merge_sort after 1000 times random: ' + str(insertion))
