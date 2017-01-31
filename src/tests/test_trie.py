@@ -74,3 +74,14 @@ def test_remove_error(empty_trie):
     empty_trie.insert('soma')
     with pytest.raises(KeyError):
         empty_trie.remove('apples')
+
+
+def test_smaller_word_returns_false(empty_trie):
+    """Test smaller word returns false."""
+    empty_trie.insert("bag")
+    assert not empty_trie.contains("bagel")
+
+
+def test_contains_random_smaller_word_returns_false(full_trie):
+    """Test contains method on 200 random small words returns false."""
+    assert not full_trie[0].contains(random.choice(full_trie[1]) + 'bob')

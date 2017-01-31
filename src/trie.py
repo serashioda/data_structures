@@ -21,10 +21,11 @@ class Trie(object):
         """Return True if string in the trie."""
         current = self.root
         for char in string.lower():
-            current = current[char]
-        if "$" in current:
-            return True
-        return False
+            if char in current:
+                current = current[char]
+            else:
+                return False
+        return "$" in current
 
     def size(self):
         """Return size of trie."""
