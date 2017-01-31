@@ -33,10 +33,23 @@ class Trie(object):
 
     def remove(self, string):
         """Remove given string from trie. Raise excepion if non-existant."""
+        error = KeyError('{} not in trie.'.format(string))
         current = self.root
-        for idx, char in enumerate(string.lower()):
-            if (idx + 1) == len(string) and '$' in current[string[-1]]:
-                del current[string[-1]]['$']
-                return
-            current = current[char]
-        raise KeyError("Cannot remove string not in trie")
+        path = [current]
+        for char in string.lower():
+            if char in current:
+                current = current[char]
+            else:
+                raise error
+            path.append(current)
+        else:
+            if "$" not in current:
+                raise error
+            deleted_dicts = []
+            for current_dict, char in zip(reversed(path[:-1]), reversed(string)):
+                if len(current_dict[char]) <= 1:
+                    deleted_dicts.append((current_dict, char))
+                else:
+                    break
+            if len(deleted_dicts) > 0:
+                del deleted_dicts[-1][0][deleted_dicts[-1][1]]

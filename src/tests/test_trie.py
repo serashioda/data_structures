@@ -56,6 +56,20 @@ def test_contains_random(full_trie):
     assert full_trie[0].contains(random.choice(full_trie[1]))
 
 
+def test_removes_only_word(empty_trie):
+    """Test removes only word."""
+    empty_trie.insert('teabag')
+    empty_trie.insert('teapot')
+    empty_trie.remove('teabag')
+    assert empty_trie.root == {"t": {"e": {"a": {"p": {"o": {"t": {'$': None}}}}}}}
+
+
+def test_remove_raises_error_on_word_prefix_in_trie(full_trie):
+    """Test remove raises error on word prefix in trie."""
+    with pytest.raises(KeyError):
+        full_trie[0].remove(random.choice(full_trie[1]) + 'bob')
+
+
 def test_size(full_trie):
     """Test size method returns 200 on 200 size trie."""
     assert full_trie[0].size() == 200
