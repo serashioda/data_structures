@@ -34,3 +34,17 @@ def merge(a, b):
         c.append(b[0])
         del b[0]
     return c
+
+
+if __name__ == '__main__':  # pragma: no cover
+    import timeit
+    import random
+
+    a = [random.randint(0, 21) for x in range(0, 21)]
+
+    insertion = timeit.timeit(
+        stmt='merge_sort(' + str(a) + ')',
+        setup='from __main__ import merge_sort',
+        number=1000,
+    )
+    print('The average time for merge_sort after 1000 times ran:' + str(insertion))
