@@ -216,17 +216,27 @@ Doubly-linked lists vs Singly-linked Lists:
 ### Binary Search Tree
 - Module: bst
 - Methods:
-    - insert(self, val): will insert the value val into the BST. If val is already present, it will be ignored.
+    - **insert(self, val):** will insert the value val into the BST. If val is already present, it will be ignored.
 
-    - search(self, val): will return the node containing that value, else None
+    - **search(self, val):** will return the node containing that value, else None
 
-    - size(self): will return the integer size of the BST (equal to the total number of values stored in the tree). It will return 0 if the tree is empty.
+    - **size(self):** will return the integer size of the BST (equal to the total number of values stored in the tree). It will return 0 if the tree is empty.
 
-    - depth(self): will return an integer representing the total number of levels in the tree. If there is one value, the depth should be 0, if two values it will be 1, if three values it may be 1 or 2, depending, etc.
+    - **depth(self):** will return an integer representing the total number of levels in the tree. If there is one value, the depth should be 0, if two values it will be 1, if three values it may be 1 or 2, depending, etc.
 
-    - contains(self, val): will return True if val is in the BST, False if not.
+    - **contains(self, val):** will return True if val is in the BST, False if not.
 
-    - balance(self): will return an integer, positive or negative that represents how well balanced the tree is. Trees which are higher on the left than the right should return a positive value, trees which are higher on the right than the left should return a negative value. An ideally-balanced tree should return 0.
+    - **balance(self):** will return an integer, positive or negative that represents how well balanced the tree is. Trees which are higher on the left than the right should return a positive value, trees which are higher on the right than the left should return a negative value. An ideally-balanced tree should return 0.
+
+    - **in_order(self):** will return a generator that will return the values in the tree using in-order traversal, one at a time.
+
+    - **pre_order(self):** will return a generator that will return the values in the tree using pre-order traversal, one at a time.
+
+    - **post_order(self):** will return a generator that will return the values in the tree using post_order traversal, one at a time.
+
+    - **breadth_first(self):** will return a generator that will return the values in the tree using breadth-first traversal, one at a time.
+
+    - **delete(self, val):** remove val from the tree if present, if not present this method is a no-op. Return None in all cases.
 
 ### Authors:
 - Amos Boldor

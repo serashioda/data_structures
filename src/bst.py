@@ -46,7 +46,9 @@ class BinarySearchTree(object):
 
     def depth(self):
         """Call helper depth method."""
-        return self._depth_node(self.root) - 1
+        if self._size > 1:
+            return self._depth_node(self.root) - 1
+        return 0
 
     def _depth_node(self, root, depth=0):
         """Depth method the takes in root node."""
