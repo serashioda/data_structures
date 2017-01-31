@@ -35,3 +35,4 @@ class HashTable(object):
         for k, v in self.table[hash_num]:
             if k == key:
                 return (k, v)
+        raise KeyError('{} not in hash table.'.format(key))

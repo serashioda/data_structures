@@ -1,5 +1,26 @@
 """Tests for Hash Table ."""
 
+import pytest
+import random
+
+
+@pytest.fixture
+def full_hash_table():
+    """Fixture to return full hash_table."""
+    from hash_table import HashTable
+    ht = HashTable(300)
+    all_words = []
+    with open('/usr/share/dict/words') as a:
+        for line in a:
+            if "'" not in line:
+                all_words.append(line.strip('\n'))
+    words = []
+    for x in range(0, 2000):
+        word = random.choice(all_words)
+        ht.set(word, word + ' key')
+        words.append(word)
+    return ht, words
+
 
 def test_hash_table_hash_method():
     """Test hash method."""
@@ -50,3 +71,16 @@ def test_has_table_get_method():
     hash_table.set('hello_potato', 5)
     assert hash_table.get('hello_potato') == ('hello_potato', 5)
 
+
+def test_get(full_hash_table):
+    """Test get 300000 times."""
+    for x in range(1, 300000):
+        word = random.choice(full_hash_table[1])
+        k_v = full_hash_table[0].get(word)
+        assert word == k_v[0] and word + ' key' == k_v[1]
+
+
+def test_not_found_raise_error(full_hash_table):
+    """Test not found raise error."""
+    with pytest.raises(KeyError):
+        full_hash_table[0].get('Aweasdkjasdsome')
