@@ -11,7 +11,7 @@ setup(
     author_email=["fordjfowler@gmail.com", "okanecasey@gmail.com"],
     licencse="MIT",
     package_dir={'': 'src'},
-    py_modules=["merge_sort", "bin_heap", "bst", "deque", "dll", "graph", "linked_list", "priority_queue", "my_queue", "shortest_path", "simple_graph", "stack", "trie", "weighted_graph"],
+    py_modules=["insertion_sort", "bin_heap", "bst", "deque", "dll", "graph", "linked_list", "priority_queue", "merge_sort", "my_queue", "quick_sort", "shortest_path", "simple_graph", "stack", "trie", "weighted_graph"],
     extras_require={
         "test": ["pytest", "pytest-cov", "tox"]
     }

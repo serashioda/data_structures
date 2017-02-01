@@ -9,7 +9,7 @@ TEST_TABLE = [
 
 
 @pytest.mark.parametrize("numbers, result", TEST_TABLE)
-def test_rotations(numbers, result):
+def test_insertion_sort(numbers, result):
     """Test the insertion sort function."""
     from insertion_sort import insertion_sort
     assert insertion_sort(numbers) == result

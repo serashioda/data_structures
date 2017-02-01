@@ -12,8 +12,14 @@ def quick_sort(unsorted_list):
         for x in unsorted_list:
             if x > pivot:
                 greater.append(x)
+            elif x < pivot:
+                less.append(x)
+            else:
+                equal.append(x)
+        return quick_sort(less) + equal + quick_sort(greater)
+    return unsorted_list
 
-
+# ------------------ Time It ----------------------
 if __name__ == '__main__':  # pragma: no cover
     import timeit
     import random
