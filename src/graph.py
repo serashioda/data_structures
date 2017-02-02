@@ -1,5 +1,5 @@
 """Module with implementation of Graph Traversal."""
-from queue import Queue
+from my_queue import Queue
 from stack import Stack
 
 
