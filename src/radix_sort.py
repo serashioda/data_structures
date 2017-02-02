@@ -23,3 +23,16 @@ def put_back(buckets):
     for bucket in buckets:
         s.extend(bucket)
     return s
+
+if __name__ == '__main__':  # pragma: no cover
+    import timeit
+    import random
+
+    a = [random.randint(0, 21) for x in range(0, 21)]
+
+    insertion = timeit.timeit(
+        stmt='radix_sort(' + str(a) + ')',
+        setup='from __main__ import radix_sort',
+        number=1000,
+    )
+    print('The average time for radix_sort after 1000 times random: ' + str(insertion))
