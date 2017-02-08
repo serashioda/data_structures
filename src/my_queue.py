@@ -26,7 +26,7 @@ class Queue(object):
     def peek(self):
         """Return the next value in the queue without dequeueing it. If the."""
         """queue is empty, returns None."""
-        return self.head.val if self.head else None
+        return self._dll.head.val if self._dll.head else None
 
     def size(self):
         """Return the size of the queue, if empty return 0."""
