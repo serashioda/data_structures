@@ -1,17 +1,17 @@
 """Merge Sort Module."""
 
 
-def split_list(list):
+def split_list(unsorted_list):
     """Split the input list."""
-    sub_lst = len(list) // 2
-    return list[:sub_lst], list[sub_lst:]
+    sub_lst = len(unsorted_list) // 2
+    return unsorted_list[:sub_lst], unsorted_list[sub_lst:]
 
 
-def merge_sort(list):
+def merge_sort(unsorted_list):
     """Sorting method."""
-    if len(list) < 2:
-        return list
-    l1, l2 = split_list(list)
+    if len(unsorted_list) < 2:
+        return unsorted_list
+    l1, l2 = split_list(unsorted_list)
     l1 = merge_sort(l1)
     l2 = merge_sort(l2)
     return merge(l1, l2)

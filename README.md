@@ -228,6 +228,11 @@ Doubly-linked lists vs Singly-linked Lists:
 
     - balance(self): will return an integer, positive or negative that represents how well balanced the tree is. Trees which are higher on the left than the right should return a positive value, trees which are higher on the right than the left should return a negative value. An ideally-balanced tree should return 0.
 
+## Merge Sort
+- Module: merge_sort
+    - Given a list of numbers or letters it will return the list sorted.
+- Performance: O(n log n)
+
 ### Authors:
 - Amos Boldor
 - Sera Smith

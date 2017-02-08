@@ -21,3 +21,12 @@ def test_sort_random_numbers():
         python_sorted = sorted(rand_numbers)
         merge_sorted = merge_sort(rand_numbers)
         assert python_sorted == merge_sorted
+
+
+def test_sort_random_big_numbers():
+    """Test sort big random numbers."""
+    for x in range(1, 1000):
+        rand_numbers = [random.randint(1, 20) for a in range(1, random.randint(200, 300))]
+        python_sorted = sorted(rand_numbers)
+        merge_sorted = merge_sort(rand_numbers)
+        assert python_sorted == merge_sorted
