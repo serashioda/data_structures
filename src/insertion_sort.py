@@ -2,7 +2,7 @@
 
 
 def insertion_sort(numbers):
-    """."""
+    """Insertion Sort."""
     def find_op(idx, lst):
         return len(lst) - idx - 1
     for idx, num in enumerate(numbers):

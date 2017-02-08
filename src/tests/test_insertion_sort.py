@@ -1,15 +1,32 @@
-"""Testing module for Insertion Sort."""
-import pytest
+"""Tests for insertion_sort module."""
+from insertion_sort import insertion_sort
+import random
 
-TEST_TABLE = [
-    [[3, 2, 5], [2, 3, 5]],
-    [[9, 4, 1, 7, 5, 2, 8, 3, 6], [1, 2, 3, 4, 5, 6, 7, 8, 9]],
-    [['a', 'd', 'e', 'g', 'f', 'b', 'c'], ['a', 'b', 'c', 'd', 'e', 'f', 'g']]
-]
+letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
-@pytest.mark.parametrize("numbers, result", TEST_TABLE)
-def test_rotations(numbers, result):
-    """Test the insertion sort function."""
-    from insertion_sort import insertion_sort
-    assert insertion_sort(numbers) == result
+def test_sort_random_letters():
+    """Test sort random letters."""
+    for x in range(1, 3000):
+        rand_letters = [random.choice(letters) for a in letters]
+        python_sorted = sorted(rand_letters)
+        insertion_sorted = insertion_sort(rand_letters)
+        assert python_sorted == insertion_sorted
+
+
+def test_sort_random_numbers():
+    """Test sort random numbers."""
+    for x in range(1, 3000):
+        rand_numbers = [random.randint(1, 20) for a in range(1, 20)]
+        python_sorted = sorted(rand_numbers)
+        insertion_sorted = insertion_sort(rand_numbers)
+        assert python_sorted == insertion_sorted
+
+
+def test_sort_random_big_numbers():
+    """Test sort big random numbers."""
+    for x in range(1, 1000):
+        rand_numbers = [random.randint(1, 20) for a in range(1, 200)]
+        python_sorted = sorted(rand_numbers)
+        insertion_sorted = insertion_sort(rand_numbers)
+        assert python_sorted == insertion_sorted
