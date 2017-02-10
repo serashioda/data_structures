@@ -1,38 +1,59 @@
 """Implementation of a decision tree."""
 
-from sklearn import tree, datasets
 
-from sklearn.externals.six import StringIO
-import pydotplus
+class TreeNode(object):
+    """Tree Node for decision trees."""
 
-iris = datasets.load_iris()
+    def __init__(self, column=None, split=None, left=None, right=None, data_idx=None):
+        """Initialize variables for tree node."""
+        self.column = column
+        self.split = split
+        self.left = left
+        self.right = right
+        self.data_idx = data_idx
 
-clf = tree.DecisionTreeClassifier()
 
-data1 = iris['data'][:48]
+class DecisionTree(object):
+    """Decision Tree Class."""
 
-test_data1 = iris['data'][48:50]
+    def __init__(self, max_depth=None, min_leaf_size=1):
+        """."""
+        self.max_depth = max_depth
+        self.min_leaf_size = min_leaf_size
+        self.root = None
 
-data2 = iris['data'][50:98]
+    def fit(self, input_df, labels):
+        """Method for fittting a new tree."""
+        self.root = TreeNode(data_idx=input_df)
+        # start spliting
+        self._split(self.root)
 
-test_data2 = iris['data'][98:100]
+    def predict(self, columns):
+        """Given some data seperated into columns.
 
-del iris['data'][48:50]
+        return new labels for data given.
+        """
+        pass
 
-clf = clf.fit(, iris['target'][:100])
+    def _split(self, node):
+        """Given some node containing data.
 
-import pdb; pdb.set_trace()
+        find best column to split on and assign split point and child nodes.
+        """
+        column, split_point = self._best_split_point_algorithm()
+#         put column and split_point
+#         if result of spliting produces nodes with atleast one values:
+#             node.left = TreeNode()
+#             node.right = TreeNode()
+#         if left has one value or right is purely one label:
+#             end left
+#         if right has one value or right is purely one label:
+#             end right
+        pass
 
-dot_data = StringIO()
+    def gini(self, p):
+        """Given a dataset return same data set giniafide."""
+        return (p) * (1 - (p)) + (1 - p) * (1 - (1 - p))
 
-tree.export_graphviz(
-    clf,
-    out_file=dot_data,
-    feature_names=iris.feature_names,
-    class_names=iris.target_names[:2],
-    filled=True,
-    rounded=True,
-    impurity=False
-)
-graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
-graph.write_pdf('iris.pdf')
+    def _best_split_point_algorithm():
+        pass
