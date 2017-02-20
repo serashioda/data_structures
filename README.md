@@ -213,59 +213,78 @@ Doubly-linked lists vs Singly-linked Lists:
     - g.floyd_warshall_path(path, start, end): return shortest path from start
                 to end.
 
+### Binary Search Tree
+- Module: bst
+- Methods:
+    - insert(self, val): will insert the value val into the BST. If val is already present, it will be ignored.
+
+    - search(self, val): will return the node containing that value, else None
+
+    - size(self): will return the integer size of the BST (equal to the total number of values stored in the tree). It will return 0 if the tree is empty.
+
+    - depth(self): will return an integer representing the total number of levels in the tree. If there is one value, the depth should be 0, if two values it will be 1, if three values it may be 1 or 2, depending, etc.
+
+    - contains(self, val): will return True if val is in the BST, False if not.
+
+    - balance(self): will return an integer, positive or negative that represents how well balanced the tree is. Trees which are higher on the left than the right should return a positive value, trees which are higher on the right than the left should return a negative value. An ideally-balanced tree should return 0.
 
 ### Authors:
-- Ford Fowler
+- Amos Boldor
 - Sera Smith
 
 ### Coverage:
 
 ```
-============================= test session starts ==============================
-platform darwin -- Python 3.5.2, pytest-3.0.5, py-1.4.31, pluggy-0.4.0
+======================= test session starts =========================
+platform darwin -- Python 3.5.2, pytest-3.0.5, py-1.4.32, pluggy-0.4.0
+rootdir: /Users/Sera/Dropbox/codefellows/401/data_structures, inifile: 
 plugins: cov-2.4.0
-collected 228 items
+collected 241 items 
 
-test_bin_heap.py ..................
-test_deque.py .................
-test_dll.py ........................
-test_graph.py .............................
-test_linked_list.py ...............
-test_priority_queue.py .......
-test_queue.py ..................
-test_shortest_path.py ....................................
-test_simple_graph.py .....................
-test_stack.py .............
-test_weighted_graph.py ..............................
+src/test_bin_heap.py ..................
+src/test_bst.py .............
+src/test_deque.py .................
+src/test_dll.py ........................
+src/test_graph.py .............................
+src/test_linked_list.py ...............
+src/test_priority_queue.py .......
+src/test_queue.py ..................
+src/test_shortest_path.py ....................................
+src/test_simple_graph.py .....................
+src/test_stack.py .............
+src/test_weighted_graph.py ..............................
 
 ---------- coverage: platform darwin, python 3.5.2-final-0 -----------
-Name                     Stmts   Miss  Cover   Missing
-------------------------------------------------------
-bin_heap.py                 43      0   100%
-deque.py                    30      0   100%
-dll.py                      73      0   100%
-graph.py                    86      0   100%
-linked_list.py              64      0   100%
-priority_queue.py           19      0   100%
-queue.py                    28      0   100%
-shortest_path.py           146      0   100%
-simple_graph.py             56      0   100%
-stack.py                    21      0   100%
-test_bin_heap.py            73      0   100%
-test_deque.py               53      0   100%
-test_dll.py                103      0   100%
-test_graph.py              118      0   100%
-test_linked_list.py         68      0   100%
-test_priority_queue.py      32      0   100%
-test_queue.py               64      0   100%
-test_shortest_path.py      155      0   100%
-test_simple_graph.py        79      0   100%
-test_stack.py               32      0   100%
-test_weighted_graph.py     127      0   100%
-weighted_graph.py           87      0   100%
-------------------------------------------------------
-TOTAL                     1557      0   100%
+Name                         Stmts   Miss  Cover   Missing
+----------------------------------------------------------
+src/bin_heap.py                 43      0   100%
+src/bst.py                      45      0   100%
+src/deque.py                    30      0   100%
+src/dll.py                      73      0   100%
+src/graph.py                    86      0   100%
+src/linked_list.py              64      0   100%
+src/priority_queue.py           19      0   100%
+src/queue.py                    28      0   100%
+src/shortest_path.py           146      0   100%
+src/simple_graph.py             56      0   100%
+src/stack.py                    21      0   100%
+src/test_bin_heap.py            73      0   100%
+src/test_bst.py                 79      0   100%
+src/test_deque.py               53      0   100%
+src/test_dll.py                103      0   100%
+src/test_graph.py              118      0   100%
+src/test_linked_list.py         68      0   100%
+src/test_priority_queue.py      32      0   100%
+src/test_queue.py               64      0   100%
+src/test_shortest_path.py      155      0   100%
+src/test_simple_graph.py        79      0   100%
+src/test_stack.py               32      0   100%
+src/test_weighted_graph.py     127      0   100%
+src/weighted_graph.py           87      0   100%
+----------------------------------------------------------
+TOTAL                         1681      0   100%
 
 
-========================== 228 passed in 0.91 seconds ==========================
+====================== 241 passed in 0.82 seconds ========================
+  
 ```
