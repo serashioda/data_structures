@@ -43,3 +43,10 @@ def test_predict_versicolor(knn):
     classifier = knn[0]
     prediction = classifier.predict(knn[1][0])
     assert prediction == knn[1][1]
+
+
+def test_bad_k():
+    """Test bad k raises error."""
+    from knn import Knn
+    with pytest.raises(ValueError):
+        Knn([1, 2, 3, 4], k='q')

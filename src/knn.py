@@ -8,7 +8,7 @@ class Knn(object):
 
     def __init__(self, dataset, k=5):
         """Initialize classifier with dateset and k integer."""
-        if k > len(dataset) or k < 0 or type(k) is not int:
+        if type(k) is not int or k > len(dataset) or k < 0:
             raise ValueError("k must be an integer between 1 and the length of the dataset")
         self.dataset = dataset
         self.k = 5
