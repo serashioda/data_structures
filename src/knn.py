@@ -16,3 +16,13 @@ class Knn(object):
     def _distance(self, p, q):
         """Calculate the distance between two points."""
         return np.sqrt(np.sum((p - q)**2))
+
+    def predict(self, data):
+        """Given a data point, predict the class of that data, based on dataset."""
+        for num in data:
+            lst = []
+            for row in self.dataset:
+                lst.append((self._distance(num, row[:-1]), row[-1]))
+            neighbors = sorted(lst)[:self.k]
+            classes = [x[1] for x in neighbors]
+            return max(set(classes), key=classes.count)
