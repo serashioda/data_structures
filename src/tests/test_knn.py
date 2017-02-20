@@ -45,8 +45,22 @@ def test_predict_versicolor(knn):
     assert prediction == knn[1][1]
 
 
-def test_bad_k():
-    """Test bad k raises error."""
+def test_bad_k_letter():
+    """Test k as letter raises error."""
     from knn import Knn
     with pytest.raises(ValueError):
         Knn([1, 2, 3, 4], k='q')
+
+
+def test_bad_k_bigger_than_dataset():
+    """Test bad k bigger than dataset."""
+    from knn import Knn
+    with pytest.raises(ValueError):
+        Knn([1, 2, 3, 4], k=6)
+
+
+def test_bad_k_lower_than_one():
+    """Test bad k lower than one."""
+    from knn import Knn
+    with pytest.raises(ValueError):
+        Knn([1, 2, 3, 4], k=-2)
