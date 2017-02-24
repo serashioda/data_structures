@@ -50,7 +50,6 @@ class Trie(object):
 
     def traverse(self, start):
         """Traverse and return individual letters."""
-        from pprint import pprint
         current = self.root
         for char in start.lower():
             if char not in current:
@@ -63,30 +62,23 @@ class Trie(object):
 
     def autocomplete(self, string=''):
         """Traverse and return whole words."""
-        from pprint import pprint
         current = self.root
         for char in string.lower():
             current = current[char]
         if "$" in current:
             return None
-        path = []
         not_visited = [{a: current[a]} for a in current]
 
         result = []
         self.get_words(string, not_visited, result)
 
-        pprint(result)
-
         return (y for y in result)
 
     def get_words(self, word, trie, result):
-        """."""
+        """Traverse and return all words for the given tree."""
         for group in trie:
-            # import pdb; pdb.set_trace()
-
             for letter in group:
                 if letter is "$":
                     result.append(word)
                 else:
-                    # import pdb; pdb.set_trace()
                     self.get_words(word + letter, [group[letter]], result)
