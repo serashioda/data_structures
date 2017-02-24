@@ -1,4 +1,4 @@
-"""Trie implementation."""
+"""Trie implementation. Speed is O(n)."""
 
 
 class Trie(object):
@@ -9,7 +9,7 @@ class Trie(object):
         self.root = {}
         self._size = 0
 
-    def insert(self, string):
+    def insert(self, string=''):
         """Insert string into trie."""
         current = self.root
         for char in string.lower():
@@ -17,20 +17,20 @@ class Trie(object):
         current.setdefault("$")
         self._size += 1
 
-    def contains(self, string):
+    def contains(self, string=''):
         """Return True if string in the trie."""
         current = self.root
         for char in string.lower():
             current = current[char]
         if "$" in current:
-            return True
+            return None
         return False
 
     def size(self):
         """Return size of trie."""
         return self._size
 
-    def remove(self, string):
+    def remove(self, string=''):
         """Remove given string from the trie. Raise excepion if word doesn't exist."""
         current = self.root
         for idx, char in enumerate(string.lower()):
@@ -40,22 +40,35 @@ class Trie(object):
             current = current[char]
         raise KeyError("Cannot remove string not in trie")
 
-    def _return_dict(self, string):
+    def _return_dict(self, string=''):
         current = self.root
         for char in string.lower():
             current = current[char]
         if "$" in current:
-            return True
+            return None
         return current
 
-    def traverse(self, string):
-        """."""
+    def traverse(self, start):
+        """Traverse and return individual letters."""
+        from pprint import pprint
+        current = self.root
+        for char in start.lower():
+            if char not in current:
+                return None
+            current = current[char]
+        if "$" in current:
+            return None
+        children = [{a: current[a]} for a in current]
+        return (y for y in children)
+
+    def autocomplete(self, string=''):
+        """Traverse and return whole words."""
         from pprint import pprint
         current = self.root
         for char in string.lower():
             current = current[char]
         if "$" in current:
-            return True
+            return None
         path = []
         not_visited = [{a: current[a]} for a in current]
 

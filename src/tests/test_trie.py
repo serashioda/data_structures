@@ -2,6 +2,7 @@
 
 import pytest
 import random
+from trie import Trie
 
 
 @pytest.fixture
@@ -25,9 +26,28 @@ def full_trie():
 @pytest.fixture
 def empty_trie():
     """Fixture to return empty trie."""
-    from trie import Trie
     trie = Trie()
     return trie
+
+
+def test_full_trie_traverse(full_trie):
+    t = full_trie[0]
+    word = full_trie[1][0]
+    result = t.traverse(word[0])
+    t = list(result)
+
+
+def test_empty_trie():
+    t = Trie()
+    res = t.traverse('meow')
+    assert res == None
+
+
+def test_one_letter_trie():
+    t = Trie()
+    t.insert('m')
+    res = t.traverse('m')
+    assert res == None
 
 
 def test_insert_1_words(empty_trie):
@@ -51,11 +71,6 @@ def test_insert_5_words(empty_trie):
     assert empty_trie.root == trie
 
 
-def test_contains_random(full_trie):
-    """Test contains method on random 200 words."""
-    assert full_trie[0].contains(random.choice(full_trie[1]))
-
-
 def test_size(full_trie):
     """Test size method returns 200 on 200 size trie."""
     assert full_trie[0].size() == 200
@@ -67,6 +82,7 @@ def test_remove(full_trie):
     full_trie[0].remove(word)
     assert not full_trie[0].contains(word)
 
+
 def test_remove_error(empty_trie):
     """Test removing string
      from tried."""
@@ -75,12 +91,13 @@ def test_remove_error(empty_trie):
     with pytest.raises(KeyError):
         empty_trie.remove('apples')
 
+
 def test(empty_trie):
     """."""
     empty_trie.insert('teapot')
     empty_trie.insert('teabag')
     empty_trie.insert('teabat')
-    words = empty_trie.traverse('tea')
+    words = empty_trie.autocomplete('tea')
     for word in words:
         assert word in ['teabat', 'teabag', 'teapot']
         print(word)
