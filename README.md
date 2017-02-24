@@ -231,6 +231,7 @@ Doubly-linked lists vs Singly-linked Lists:
 ### Authors:
 - Amos Boldor
 - Sera Smith
+- Ford Fowler
 
 ### Coverage:
 
