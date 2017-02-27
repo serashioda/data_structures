@@ -32,6 +32,7 @@ def empty_trie():
 def test_removes_only_word(empty_trie):
     """Test removing one word."""
     empty_trie.insert('teapot')
+    empty_trie.insert('teabag')
     empty_trie.remove('teabag')
     assert empty_trie.root == {'t': {'e': {'a': {'p': {'o': {'t': {'$': None}}}}}}}
 
