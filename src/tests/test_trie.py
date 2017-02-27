@@ -1,5 +1,4 @@
 """Test for Trie implementation."""
-
 import pytest
 import random
 
@@ -28,6 +27,19 @@ def empty_trie():
     from trie import Trie
     trie = Trie()
     return trie
+
+
+def test_removes_only_word(empty_trie):
+    """Test removing one word."""
+    empty_trie.insert('teapot')
+    empty_trie.remove('teabag')
+    assert empty_trie.root == {'t': {'e': {'a': {'p': {'o': {'t': {'$': None}}}}}}}
+
+
+def test_smaller_word_returns_false(empty_trie):
+    """Test that smaller word part of bigger word returns false."""
+    empty_trie.insert("bag")
+    assert not empty_trie.contains("bagel")
 
 
 def test_insert_1_words(empty_trie):
@@ -69,7 +81,7 @@ def test_remove(full_trie):
 
 
 def test_remove_error(empty_trie):
-    """Test removing string xfrom trie."""
+    """Test removing string from trie."""
     empty_trie.insert('amos')
     empty_trie.insert('soma')
     with pytest.raises(KeyError):
