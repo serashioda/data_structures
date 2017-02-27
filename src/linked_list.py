@@ -1,91 +1,83 @@
-"""Python implementation of a linked list."""
+"""Module defining linked list."""
 
 
-class Node():
-    """Instantiate a Node."""
+class LinkedList(object):
+    """Classic linked list data structure."""
 
-    def __init__(self, value, next_):
-        """Instantiate a node with value and next params."""
-        self.value = value
-        self.next = next_
-
-
-class LinkedList():
-    """Instantiate a Linked List."""
-
-    def __init__(self):
-        """Instantiate an empty Linked list."""
-        self.head = None
-        self.tail = None
+    def __init__(self, iterable=None):
+        """Initialize LinkedList instance."""
+        self._head = None
+        self._length = 0
+        if iterable is not None:
+            for el in iterable:
+                self.push(el)
 
     def push(self, val):
-        """Push a new node as the head of the linked list."""
-        if self.head is None:
-            new_node = Node(val, None)
-            self.head = new_node
-        else:
-            new_node = Node(val, self.head)
-            self.head = new_node
+        """Insert val at the head of linked list."""
+        self._head = Node(val, self._head)
+        self._length += 1
 
     def pop(self):
-        """Remove a new node from the head of the linked list."""
-        if self.head is not None:
-            try:
-                pop_head = self.head.value
-                self.head = self.head.next
-                return pop_head
-            except ValueError:
-                pop_head = self.head.value
-                self.head = None
-        else:
-            raise IndexError('cannot pop from empty list')
-
-    def search(self, val):
-        """Search for the value in a list of nodes."""
-        curr_node = self.head
-        while curr_node is not None:
-            if curr_node.value == val:
-                return curr_node
-            else:
-                curr_node = curr_node.next
-        return None
-
-    def remove(self, val):
-        """Search for node with matching value and removes it."""
-        if self.head.value == val:
-            self.head = self.head.next
-            return
-        curr_node = self.head.next
-        prev_node = self.head
-        while curr_node is not None:
-            if curr_node.value == val:
-                prev_node.next = curr_node.next
-                return
-            else:
-                prev_node = curr_node
-                curr_node = curr_node.next
+        """Pop the first value off of the head and return it."""
+        if self._head is None:
+            raise IndexError("Cannot pop from an empty linked list.")
+        first = self._head.val
+        self._head = self._head.next
+        self._length -= 1
+        return first
 
     def size(self):
-        """Return the length of the linked list."""
-        if self.head is not None:
-            size = 1
-            curr = self.head
-            while curr.next is not None:
-                size += 1
+        """Return length of linked list."""
+        return self._length
+
+    def search(self, val):
+        """Will return the node from the list if present, otherwise none."""
+        search = self._head
+        while search:
+            if search.val == val:
+                return search
+            search = search.next
+        return None
+
+    def remove(self, node):
+        """Remove a node from linked list."""
+        if type(node) is Node:
+            prev = None
+            curr = self._head
+            while curr:
+                if curr is node:
+                    if prev:
+                        prev.next = curr.next
+                    else:
+                        self._head = curr.next
+                    self._length -= 1
+                    break
+                prev = curr
                 curr = curr.next
-            return size
-        return 0
+        else:
+            raise ValueError("Argument to remove must be of node type.")
 
     def display(self):
-        """Return the linked list as a printed string of a tuple literal."""
-        output = "("
-        current = self.head
-        while current is not None:
-            if type(current.value) == str:
-                output += "'" + current.value + "'"
+        """Display linked list in tuple literal form."""
+        res = "("
+        curr = self._head
+        while curr:
+            val = curr.val
+            if type(val) is str:
+                val = "'" + val + "'"
             else:
-                output += str(current.value)
-            if current.next is not None:
-                output += ', '
-            current = current.next
-        return output + ")"
+                val = str(val)
+            res += val
+            if curr.next:
+                res += ', '
+            curr = curr.next
+        return res + ')'
+
+
+class Node(object):
+    """Node class."""
+
+    def __init__(self, val, next=None):
+        """Initialize Node instance."""
+        self.val = val
+        self.next = next
