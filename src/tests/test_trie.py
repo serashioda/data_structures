@@ -195,6 +195,25 @@ def test_insert_5_words(empty_trie):
     assert empty_trie.root == trie
 
 
+def test_contains_random(full_trie):
+    """Test contains method on random 200 words."""
+    assert full_trie[0].contains(random.choice(full_trie[1]))
+
+
+def test_removes_only_word(empty_trie):
+    """Test removes only word."""
+    empty_trie.insert('teabag')
+    empty_trie.insert('teapot')
+    empty_trie.remove('teabag')
+    assert empty_trie.root == {"t": {"e": {"a": {"p": {"o": {"t": {'$': None}}}}}}}
+
+
+def test_remove_raises_error_on_word_prefix_in_trie(full_trie):
+    """Test remove raises error on word prefix in trie."""
+    with pytest.raises(KeyError):
+        full_trie[0].remove(random.choice(full_trie[1]) + 'bob')
+
+
 def test_size(full_trie):
     """Test size method returns 200 on 200 size trie."""
     assert full_trie[0].size() == 200
@@ -215,12 +234,23 @@ def test_remove_error(empty_trie):
         empty_trie.remove('apples')
 
 
-def test(empty_trie):
-    """."""
-    empty_trie.insert('teapot')
-    empty_trie.insert('teabag')
-    empty_trie.insert('teabat')
-    words = empty_trie.autocomplete('tea')
-    for word in words:
-        assert word in ['teabat', 'teabag', 'teapot']
-        print(word)
+def test_smaller_word_returns_false(empty_trie):
+    """Test smaller word returns false."""
+    empty_trie.insert("bag")
+    assert not empty_trie.contains("bagel")
+
+
+def test_contains_random_smaller_word_returns_false(full_trie):
+    """Test contains method on 200 random small words returns false."""
+    assert not full_trie[0].contains(random.choice(full_trie[1]) + 'bob')
+
+
+# def test(empty_trie):
+#     """."""
+#     empty_trie.insert('teapot')
+#     empty_trie.insert('teabag')
+#     empty_trie.insert('teabat')
+#     words = empty_trie.autocomplete('tea')
+#     for word in words:
+#         assert word in ['teabat', 'teabag', 'teapot']
+#         print(word)

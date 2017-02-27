@@ -35,10 +35,20 @@ class Trie(object):
     def remove(self, string=''):
         """Remove given string from the trie. Raise excepion if word doesn't exist."""
         current = self.root
+        frag = ''
         for idx, char in enumerate(string.lower()):
+            frag += char
             if (idx + 1) == len(string) and '$' in current[string[-1]]:
                 self._size -= 1
                 del current[string[-1]]['$']
+                return
+            words = self.autocomplete(frag)
+            if words is None:
+                raise KeyError("Cannot remove string not in trie")
+            words = list(words)
+            if len(words) == 1 and words[0] == string:
+                self._size -= 1
+                del current[char]
                 return
             if char not in current:
                 raise KeyError("Cannot remove string not in trie")
