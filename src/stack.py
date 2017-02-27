@@ -33,4 +33,4 @@ class Stack(object):
         return self.size()
 
     def _update_attr(self):
-        self.top = self._linkedlist.head
+        self.top = self._linkedlist._head
