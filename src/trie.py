@@ -21,9 +21,11 @@ class Trie(object):
         """Return True if string in the trie."""
         current = self.root
         for char in string.lower():
+            if char not in current:
+                return False
             current = current[char]
         if "$" in current:
-            return None
+            return True
         return False
 
     def size(self):
@@ -35,21 +37,17 @@ class Trie(object):
         current = self.root
         for idx, char in enumerate(string.lower()):
             if (idx + 1) == len(string) and '$' in current[string[-1]]:
+                self._size -= 1
                 del current[string[-1]]['$']
                 return
+            if char not in current:
+                raise KeyError("Cannot remove string not in trie")
             current = current[char]
-        raise KeyError("Cannot remove string not in trie")
-
-    def _return_dict(self, string=''):
-        current = self.root
-        for char in string.lower():
-            current = current[char]
-        if "$" in current:
-            return None
-        return current
 
     def traverse(self, start):
         """Traverse and return individual letters."""
+        if start is None or start is '':
+            return None
         current = self.root
         for char in start.lower():
             if char not in current:
@@ -62,11 +60,11 @@ class Trie(object):
 
     def autocomplete(self, string=''):
         """Traverse and return whole words."""
+        if len(self.root) == 0:
+            return None
         current = self.root
         for char in string.lower():
             current = current[char]
-        if "$" in current:
-            return None
         not_visited = [{a: current[a]} for a in current]
 
         result = []
