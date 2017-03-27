@@ -220,7 +220,8 @@ Doubly-linked lists vs Singly-linked Lists:
 - K-Nearest Neigbour (Knn) algorithm:  categorizes based on the labels of the K closest data points. 
 - The distance between two points (p and q) is calculated as:
 
-```d = sqrt(sum(p - q) ** 2)
+```
+d = sqrt(sum(p - q) ** 2)
 ```
 
 - Methods:
