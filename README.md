@@ -236,56 +236,61 @@ Doubly-linked lists vs Singly-linked Lists:
 ### Coverage:
 
 ```
-======================= test session starts =========================
-platform darwin -- Python 3.5.2, pytest-3.0.5, py-1.4.32, pluggy-0.4.0
-rootdir: /Users/Sera/Dropbox/codefellows/401/data_structures, inifile: 
+===================================================== test session starts ====================================================
+platform darwin -- Python 3.5.2, pytest-3.0.7, py-1.4.33, pluggy-0.4.0
+rootdir: /Users/Sera/Dropbox/codefellows/401/data_structures, inifile:
 plugins: cov-2.4.0
-collected 241 items 
+collected 288 items
 
-src/test_bin_heap.py ..................
-src/test_bst.py .............
-src/test_deque.py .................
-src/test_dll.py ........................
-src/test_graph.py .............................
-src/test_linked_list.py ...............
-src/test_priority_queue.py .......
-src/test_queue.py ..................
-src/test_shortest_path.py ....................................
-src/test_simple_graph.py .....................
-src/test_stack.py .............
-src/test_weighted_graph.py ..............................
+src/tests/test_bin_heap.py ..................
+src/tests/test_bst.py .....................................
+src/tests/test_deque.py .................
+src/tests/test_dll.py ........................
+src/tests/test_graph.py .............................
+src/tests/test_linked_list.py ...............
+src/tests/test_priority_queue.py .......
+src/tests/test_queue.py ..................
+src/tests/test_shortest_path.py ....................................
+src/tests/test_simple_graph.py .....................
+src/tests/test_stack.py .............
+src/tests/test_trie.py .......................
+src/tests/test_weighted_graph.py ..............................
 
 ---------- coverage: platform darwin, python 3.5.2-final-0 -----------
-Name                         Stmts   Miss  Cover   Missing
-----------------------------------------------------------
-src/bin_heap.py                 43      0   100%
-src/bst.py                      45      0   100%
-src/deque.py                    30      0   100%
-src/dll.py                      73      0   100%
-src/graph.py                    86      0   100%
-src/linked_list.py              64      0   100%
-src/priority_queue.py           19      0   100%
-src/queue.py                    28      0   100%
-src/shortest_path.py           146      0   100%
-src/simple_graph.py             56      0   100%
-src/stack.py                    21      0   100%
-src/test_bin_heap.py            73      0   100%
-src/test_bst.py                 79      0   100%
-src/test_deque.py               53      0   100%
-src/test_dll.py                103      0   100%
-src/test_graph.py              118      0   100%
-src/test_linked_list.py         68      0   100%
-src/test_priority_queue.py      32      0   100%
-src/test_queue.py               64      0   100%
-src/test_shortest_path.py      155      0   100%
-src/test_simple_graph.py        79      0   100%
-src/test_stack.py               32      0   100%
-src/test_weighted_graph.py     127      0   100%
-src/weighted_graph.py           87      0   100%
-----------------------------------------------------------
-TOTAL                         1681      0   100%
+Name                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------
+src/bin_heap.py                       43      0   100%
+src/bst.py                           233     45    81%   100, 154, 165, 167, 205, 217-219, 233, 242-244, 251-255, 259-282, 296-301, 317, 320-323
+src/deque.py                          30      0   100%
+src/dll.py                            73      0   100%
+src/graph.py                          86      0   100%
+src/linked_list.py                    64      0   100%
+src/my_queue.py                       28      0   100%
+src/priority_queue.py                 19      0   100%
+src/shortest_path.py                 146      0   100%
+src/simple_graph.py                   56      0   100%
+src/stack.py                          21      0   100%
+src/tests/test_bin_heap.py            73      0   100%
+src/tests/test_bst.py                241      0   100%
+src/tests/test_deque.py               53      0   100%
+src/tests/test_dll.py                103      0   100%
+src/tests/test_graph.py              118      0   100%
+src/tests/test_hash_table.py           0      0   100%
+src/tests/test_linked_list.py         68      0   100%
+src/tests/test_priority_queue.py      32      0   100%
+src/tests/test_queue.py               64      0   100%
+src/tests/test_shortest_path.py      155      0   100%
+src/tests/test_simple_graph.py        79      0   100%
+src/tests/test_stack.py               32      0   100%
+src/tests/test_trie.py               153      0   100%
+src/tests/test_weighted_graph.py     127      0   100%
+src/trie.py                           69      2    97%   29, 54
+src/weighted_graph.py                 87      0   100%
+----------------------------------------------------------------
+TOTAL                               2253     47    98%
 
 
-====================== 241 passed in 0.82 seconds ========================
+================================================= 288 passed in 2.10 seconds =================================================
+
   
 ```
