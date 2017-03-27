@@ -228,9 +228,63 @@ Doubly-linked lists vs Singly-linked Lists:
 
     - balance(self): will return an integer, positive or negative that represents how well balanced the tree is. Trees which are higher on the left than the right should return a positive value, trees which are higher on the right than the left should return a negative value. An ideally-balanced tree should return 0.
 
+
+
+# Machine Learning - Supervised Classifiers
+## K Nearest Neigbor (Knn) Classifier:
+
+- Module: knn
+- K-Nearest Neigbour (Knn) algorithm:  categorizes based on the labels of the K closest data points. 
+- The distance between two points (p and q) is calculated as:
+
+```
+d = sqrt(sum(p - q) ** 2)
+```
+
+- Methods:
+
+    - Predict(dataset): Predict class values for unclassified dataset.
+
+- Initialize:
+
+### Knn(dataset, k=5)
+
+- Advantages:
+
+    - A low cost of learning
+    - Often Successful when data is well mixed.
+
+- Disadvantages:
+
+    - Very inefficient for large data sets
+    - No real model to interpret
+    - Performance depends on the number of dimensions
+    - Inconsistent results when there’s ties in votes
+
+## Decision Tree Classifier
+
+- Module: decision_tree
+
+- Initialize:
+
+    - Clf(min_leaf_size=1, max_depth=3)
+
+- Methods:
+
+    - fit(dataset, classes): Build a decision tree off of data. Dataset should be a list of rows, with the final element of         each row being the class value.
+
+    - predict(dataset): Predict class values for unclassified dataset, using prebuilt tree.
+
+    - cross_validate(dataset, classes): Splits a classified dataset in two, one to build the decision tree, the other to     
+      predict with. Returns the percentage of predicted labels that match actual labels.
+
+    - convert_csv(file): Reads csv file into useable format.
+
+
 ### Authors:
-- Amos Boldor
+- Amos Bolder
 - Sera Smith
+- Ford Fowler
 
 ### Coverage:
 
