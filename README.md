@@ -293,3 +293,24 @@ TOTAL                         1681      0   100%
 ====================== 241 passed in 0.82 seconds ========================
   
 ```
+
+#### Hash Functions: 
+
+##### Additive hash: 
+* init : O(n) 
+* _hash: O(m)
+* get: O(1) + O(k) 
+* set: O(k) + O(1) 
+
+##### FNV hash:
+* __init__ : O(n)
+* _hash: O(n)
+* get: O(1) + O(n)
+* set: O(n) + O(1)
+
+#### Trie 
+* insert: O(n) 
+* contains: O(n) + O(k) 
+* size: O(1) 
+* remove: O(n**2) 
+* traverse: O(k) + O(2n)
